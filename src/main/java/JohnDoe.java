@@ -16,12 +16,16 @@ public class JohnDoe {
             if (userInput.equalsIgnoreCase("bye")) {
                 scanner.close();
                 break;
+            } else if (userInput.equalsIgnoreCase("list")) {
+                for (int i = 0; i <= listIndex; i++) {
+                    System.out.printf("%d. %s\n", i + 1, list[i]);
+                }
+            } else {
+                listIndex++;
+                list[listIndex] = userInput;
+
+                System.out.printf("added: %s\n", userInput);
             }
-
-            listIndex++;
-            list[listIndex] = userInput;
-
-            System.out.printf("added: %s\n", userInput);
         }
 
         System.out.println("Bye. Hope to see you again soon!");
