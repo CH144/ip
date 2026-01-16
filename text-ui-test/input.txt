@@ -1,0 +1,9 @@
+help
+todo buy milk
+deadline homework /by Sat
+event project meeting /from Mon 1000 /to 1200
+mark 1
+list
+unmark 1
+list
+bye
