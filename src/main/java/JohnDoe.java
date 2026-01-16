@@ -12,7 +12,7 @@ public class JohnDoe {
 
         while (true) {
             String userInput = scanner.nextLine();
-            String[] tokens = userInput.split("\\s+");
+            String[] tokens = userInput.split(" ", 2);
 
             printBar();
 
@@ -28,18 +28,23 @@ public class JohnDoe {
             } else if (tokens[0].equalsIgnoreCase("unmark")) {
                 int index = Integer.parseInt(tokens[1]) - 1;
                 unmarkTask(index);
+            } else if (tokens[0].equalsIgnoreCase("todo")) {
+                addTodo(userInput);
             } else {
-                addTask(userInput);
+                System.out.println("  Sorry, I don't understand the command!");
             }
 
             printBar();
         }
     }
 
-    private static void addTask(String taskName) {
+    private static void addTodo(String taskName) {
         listIndex++;
-        list[listIndex] = new Task(taskName);
-        System.out.printf("  added: %s\n", taskName);
+        list[listIndex] = new Todo(taskName);
+        System.out.printf("  Got it. I've added this task:\n   %s\n",
+                list[listIndex].toString());
+        System.out.printf("  Now you have %d tasks in the list.\n",
+                listIndex + 1);
     }
 
     private static void listTasks() {
