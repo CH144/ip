@@ -5,16 +5,23 @@ public class JohnDoe {
         System.out.println("Hello! I'm JohnDoe");
         System.out.println("What can I do for you?");
 
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            String userRequest = scanner.nextLine();
+        String[] list = new String[100];
+        int listIndex = -1;
 
-            if (userRequest.equalsIgnoreCase("bye")) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            String userInput = scanner.nextLine();
+
+            if (userInput.equalsIgnoreCase("bye")) {
                 scanner.close();
                 break;
             }
 
-            System.out.println(userRequest);
+            listIndex++;
+            list[listIndex] = userInput;
+
+            System.out.printf("added: %s\n", userInput);
         }
 
         System.out.println("Bye. Hope to see you again soon!");
