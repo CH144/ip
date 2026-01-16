@@ -7,29 +7,37 @@ public class JohnDoe {
     public static void main(String[] args) {
         System.out.println("Hello! I'm JohnDoe");
         System.out.println("What can I do for you?");
+        printBar();
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             String userInput = scanner.nextLine();
-            String[] tokens = userInput.split(" ", 2);
+            String[] commandDetails = userInput.split(" ", 2);
 
             printBar();
 
-            if (tokens[0].equalsIgnoreCase("bye")) {
+            if (commandDetails[0].equalsIgnoreCase("bye")) {
                 scanner.close();
                 System.out.println("Bye. Hope to see you again soon!");
                 break;
-            } else if (tokens[0].equalsIgnoreCase("list")) {
+            } else if (commandDetails[0].equalsIgnoreCase("list")) {
                 listTasks();
-            } else if (tokens[0].equalsIgnoreCase("mark")) {
-                int index = Integer.parseInt(tokens[1]) - 1;
+            } else if (commandDetails[0].equalsIgnoreCase("mark")) {
+                int index = Integer.parseInt(commandDetails[1]) - 1;
                 markTask(index);
-            } else if (tokens[0].equalsIgnoreCase("unmark")) {
-                int index = Integer.parseInt(tokens[1]) - 1;
+            } else if (commandDetails[0].equalsIgnoreCase("unmark")) {
+                int index = Integer.parseInt(commandDetails[1]) - 1;
                 unmarkTask(index);
-            } else if (tokens[0].equalsIgnoreCase("todo")) {
-                addTodo(userInput);
+            } else if (commandDetails[0].equalsIgnoreCase("todo")) {
+                addTask(commandDetails[1]);
+            } else if (commandDetails[0].equalsIgnoreCase("deadline")) {
+                String[] taskDetails = commandDetails[1].split(" /by ");
+                addTask(taskDetails[0], taskDetails[1]);
+            } else if (commandDetails[0].equalsIgnoreCase("event")) {
+                String[] taskDetails = commandDetails[1].split(" /from ");
+                String[] timings = taskDetails[1].split(" /to ");
+                addTask(taskDetails[0], timings[0], timings[1]);
             } else {
                 System.out.println("  Sorry, I don't understand the command!");
             }
@@ -38,9 +46,27 @@ public class JohnDoe {
         }
     }
 
-    private static void addTodo(String taskName) {
+    private static void addTask(String taskName) {
         listIndex++;
         list[listIndex] = new Todo(taskName);
+        System.out.printf("  Got it. I've added this task:\n   %s\n",
+                list[listIndex].toString());
+        System.out.printf("  Now you have %d tasks in the list.\n",
+                listIndex + 1);
+    }
+
+    private static void addTask(String taskName, String deadline) {
+        listIndex++;
+        list[listIndex] = new Deadline(taskName, deadline);
+        System.out.printf("  Got it. I've added this task:\n   %s\n",
+                list[listIndex].toString());
+        System.out.printf("  Now you have %d tasks in the list.\n",
+                listIndex + 1);
+    }
+
+    private static void addTask(String taskName, String start, String end) {
+        listIndex++;
+        list[listIndex] = new Event(taskName, start, end);
         System.out.printf("  Got it. I've added this task:\n   %s\n",
                 list[listIndex].toString());
         System.out.printf("  Now you have %d tasks in the list.\n",
