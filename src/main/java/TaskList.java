@@ -116,6 +116,25 @@ class TaskList {
                 tasklist.size());
     }
 
+    public void deleteTask(String input) {
+        try {
+            int index = Integer.parseInt(input) - 1;
+            Task task = tasklist.get(index);
+            tasklist.remove(index);
+            System.out.printf("  Noted. I've removed this task:\n"
+                    + "    %s\n"
+                    + "  Now you have %d tasks in the list.\n\n> ",
+                    task.toString(),
+                    tasklist.size());
+        } catch (NumberFormatException e) {
+            System.out.printf("  Invalid format.\n"
+                    + "  Enter 'delete' for more help.\n\n> ");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.printf("  Task does not exist.\n"
+                    + "  Enter 'list' to view all task numbers.\n\n> ");
+        }
+    }
+
     public void markTask(String input) {
         try {
             int index = Integer.parseInt(input) - 1;

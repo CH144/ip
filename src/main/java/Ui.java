@@ -23,6 +23,7 @@ class Ui {
                 + "    todo\n"
                 + "    deadline\n"
                 + "    event\n"
+                + "    delete\n"
                 + "    mark\n"
                 + "    unmark\n"
                 + "    bye\n"
@@ -46,6 +47,13 @@ class Ui {
         System.out.printf("  info    : add a task with a start and end.\n"
                 + "  usage   : event TASK_NAME /from START_TIME /to END_TIME\n"
                 + "  example : event tP meeting /from Mon 10am /to 12nn\n\n> ");
+    }
+
+    public static void printDeleteHelp() {
+        System.out.printf("  info    : removes an existing task.\n"
+                + "  usage   : delete TASK_NUMBER\n"
+                + "  example : delete 1\n"
+                + "  Use 'list' to view all tasks and their corresponding number.\n\n> ");
     }
 
     public static void printMarkHelp() {

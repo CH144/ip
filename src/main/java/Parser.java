@@ -18,6 +18,9 @@ class Parser {
             case "event":
                 tasklist.addEvent(tokens[1]);
                 break;
+            case "delete":
+                tasklist.deleteTask(tokens[1]);
+                break;
             case "mark":
                 tasklist.markTask(tokens[1]);
                 break;
@@ -47,6 +50,9 @@ class Parser {
                 break;
             case "event":
                 Ui.printEventHelp();
+                break;
+            case "delete":
+                Ui.printDeleteHelp();
                 break;
             case "mark":
                 Ui.printMarkHelp();
