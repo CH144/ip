@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-class Tasklist {
+class TaskList {
     private ArrayList<Task> tasklist;
 
-    public Tasklist() {
+    public TaskList() {
         tasklist = new ArrayList<Task>();
     }
 

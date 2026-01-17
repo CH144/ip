@@ -3,7 +3,7 @@ class Parser {
         // intentionally blank
     }
 
-    public static boolean parse(String userInput, Tasklist tasklist) {
+    public static boolean parse(String userInput, TaskList tasklist) {
         String[] tokens = userInput.split("\\s+", 2);
         String command = tokens[0];
 
