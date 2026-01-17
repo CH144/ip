@@ -12,7 +12,7 @@ public class JohnDoe {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            String userInput = scanner.nextLine().stripLeading();
+            String userInput = scanner.nextLine().stripLeading().stripTrailing();
             String[] commandDetails = userInput.split(" ", 2);
 
             System.out.printf("\n");
@@ -21,16 +21,6 @@ public class JohnDoe {
                 scanner.close();
                 System.out.printf("Bye. Hope to see you again soon!\n");
                 break;
-            } else if (commandDetails[0].equals("list")) {
-                listTasks();
-            } else if (commandDetails[0].equals("todo")
-                    || commandDetails[0].equals("deadline")
-                    || commandDetails[0].equals("event")) {
-                addTask(commandDetails[0], commandDetails[1]);
-            } else if (commandDetails[0].equals("mark")) {
-                markTask(commandDetails[1]);
-            } else if (commandDetails[0].equals("unmark")) {
-                unmarkTask(commandDetails[1]);
             } else if (commandDetails[0].equals("help")) {
                 System.out.printf("  Available commands:\n"
                         + "    list\n"
@@ -42,8 +32,25 @@ public class JohnDoe {
                         + "    bye\n"
                         + "  For more details, enter a command with no arguments.\n"
                         + "  Commands are case-sensitive.\n");
+            } else if (commandDetails[0].equals("list")) {
+                listTasks();
+            } else if (commandDetails[0].equals("todo")
+                    || commandDetails[0].equals("deadline")
+                    || commandDetails[0].equals("event")) {
+                if (commandDetails.length > 1) {
+                    addTask(commandDetails[0], commandDetails[1]);
+                } else {
+                    printAddHelp(commandDetails[0]);
+                }
+            } else if (commandDetails[0].equals("mark")
+                    || commandDetails[0].equals("unmark")) {
+                if (commandDetails.length > 1) {
+                    toggleTask(commandDetails[0], commandDetails[1]);
+                } else {
+                    printToggleHelp(commandDetails[0]);
+                }
             } else {
-                System.out.printf("Enter 'help' for a list of available commands.\n");
+                System.out.printf("Enter 'help' for a list of all available commands.\n");
             }
 
             System.out.printf("\n> ");
@@ -93,25 +100,44 @@ public class JohnDoe {
         }
     }
 
-    private static void markTask(String taskNumber) {
-        int index = Integer.parseInt(taskNumber) - 1;
-        if (index < 0 || index > listIndex) {
-            return;
+    private static void toggleTask(String command, String taskNumber) {
+        try {
+            int index = Integer.parseInt(taskNumber.stripLeading()) - 1;
+            if (command.equals("mark")) {
+                list[index].markAsDone();
+                System.out.printf("  Nice! I've marked this task as done:\n"
+                        + "    %s\n",
+                        list[index].toString());
+            } else {
+                list[index].markAsNotDone();
+                System.out.printf("  OK, I've marked this task as not done yet:\n"
+                        + "    %s\n",
+                        list[index].toString());
+            }
+        } catch (NumberFormatException e) {
+            System.out.printf("  Input is not a number.\n\n");
+            printToggleHelp(command);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.printf("  Task does not exist.\n"
+                    + "  Use 'list' to view all tasks and their corresponding number.\n");
+        } catch (NullPointerException e) {
+            System.out.printf("  Task does not exist.\n"
+                    + "  Use 'list' to view all tasks and their corresponding number.\n");
         }
-        list[index].markAsDone();
-        System.out.printf("  Nice! I've marked this task as done:\n"
-                + "    %s\n",
-                list[index].toString());
     }
 
-    private static void unmarkTask(String taskNumber) {
-        int index = Integer.parseInt(taskNumber) - 1;
-        if (index < 0 || index > listIndex) {
-            return;
-        }
-        list[index].markAsNotDone();
-        System.out.printf("  OK, I've marked this task as not done yet:\n"
-                + "    %s\n",
-                list[index].toString());
+    private static void printAddHelp(String command) {
+
+    }
+
+    private static void printToggleHelp(String command) {
+        System.out.printf("  info    : set a task as %sdone, indicated by '[%s]'\n"
+                + "  usage   : %s TASK_NUMBER\n"
+                + "  example : %s 1\n"
+                + "  Use 'list' to view all tasks and their corresponding number.\n",
+                command.equals("mark") ? "" : "not ",
+                command.equals("mark") ? "X" : " ",
+                command,
+                command);
     }
 }
