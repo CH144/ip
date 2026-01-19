@@ -3,68 +3,50 @@ class Parser {
         // intentionally blank
     }
 
-    public static boolean parse(String userInput, TaskList tasklist) {
+    public static Command parse(String userInput) {
         String[] tokens = userInput.split("\\s+", 2);
         String command = tokens[0];
 
         if (tokens.length > 1) {
             switch (command) {
             case "todo":
-                tasklist.addTodo(tokens[1]);
-                break;
+                return new TodoCommand(tokens[1]);
             case "deadline":
-                tasklist.addDeadline(tokens[1]);
-                break;
+                return new DeadlineCommand(tokens[1]);
             case "event":
-                tasklist.addEvent(tokens[1]);
-                break;
+                return new EventCommand(tokens[1]);
             case "delete":
-                tasklist.deleteTask(tokens[1]);
-                break;
+                return new DeleteCommand(tokens[1]);
             case "mark":
-                tasklist.markTask(tokens[1]);
-                break;
+                return new MarkCommand(tokens[1]);
             case "unmark":
-                tasklist.unmarkTask(tokens[1]);
-                break;
+                return new UnmarkCommand(tokens[1]);
             default:
-                Ui.printUnknownCommandHelp();
-                break;
+                return new UnknownCommand();
             }
         } else {
             switch (command) {
             case "bye":
-                Ui.printFarewell();
-                return false;
+                return new ByeCommand();
             case "help":
-                Ui.printCommandsListHelp();
-                break;
+                return new HelpCommand();
             case "list":
-                tasklist.printTasks();
-                break;
+                return new ListCommand();
             case "todo":
-                Ui.printTodoHelp();
-                break;
+                return new TodoCommand();
             case "deadline":
-                Ui.printDeadlineHelp();
-                break;
+                return new DeadlineCommand();
             case "event":
-                Ui.printEventHelp();
-                break;
+                return new EventCommand();
             case "delete":
-                Ui.printDeleteHelp();
-                break;
+                return new DeleteCommand();
             case "mark":
-                Ui.printMarkHelp();
-                break;
+                return new MarkCommand();
             case "unmark":
-                Ui.printUnmarkHelp();
-                break;
+                return new UnmarkCommand();
             default:
-                Ui.printUnknownCommandHelp();
-                break;
+                return new UnknownCommand();
             }
         }
-        return true;
     }
 }
