@@ -4,6 +4,6 @@ class ListCommand extends Command {
     }
 
     public void run(TaskList tasklist, Ui ui) {
-        tasklist.printTasks();
+        tasklist.printTasks(ui);
     }
 }

@@ -15,7 +15,7 @@ class UnmarkCommand extends Command {
 
     public void run(TaskList tasklist, Ui ui) {
         if (opInt.isPresent()) {
-            tasklist.unmarkTask(opInt.getAsInt());
+            tasklist.unmarkTask(opInt.getAsInt(), ui);
         } else {
             ui.printUnmarkHelp();
         }

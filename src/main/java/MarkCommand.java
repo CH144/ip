@@ -15,7 +15,7 @@ class MarkCommand extends Command {
 
     public void run(TaskList tasklist, Ui ui) {
         if (opInt.isPresent()) {
-            tasklist.markTask(opInt.getAsInt());
+            tasklist.markTask(opInt.getAsInt(), ui);
         } else {
             ui.printMarkHelp();
         }

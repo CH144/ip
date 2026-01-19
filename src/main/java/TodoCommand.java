@@ -18,7 +18,7 @@ class TodoCommand extends Command {
 
     public void run(TaskList tasklist, Ui ui) {
         if (opTask.isPresent()) {
-            tasklist.addTask(opTask.get());
+            tasklist.addTask(opTask.get(), ui);
         } else {
             ui.printTodoHelp();
         }
