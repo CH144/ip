@@ -1,18 +1,32 @@
-import java.util.Scanner;
-
 public class JohnDoe {
-    public static void main(String[] args) {
-        TaskList tasklist = new TaskList();
-        Scanner scanner = new Scanner(System.in);
+    private TaskList tasklist;
+    private Ui ui;
 
-        Ui.printGreeting();
+    private JohnDoe() {
+        tasklist = new TaskList();
+        ui = new Ui();
+    }
 
-        while (true) {
-            String userInput = scanner.nextLine().strip();
-            if (!Parser.parse(userInput, tasklist)) {
-                scanner.close();
-                break;
+    private void run() {
+        ui.printGreeting();
+
+        boolean isBye = false;
+        while (!isBye) {
+            try {
+                String userInput = ui.readUserInput();
+                Command command = Parser.parse(userInput);
+                command.run(tasklist, ui);
+                isBye = command.isBye();
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                System.out.printf("  Task number does not exist.\n"
+                        + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ");
+            } catch (IllegalArgumentException e) {
+                System.out.printf(e.getMessage());
             }
         }
+    }
+
+    public static void main(String[] args) {
+        new JohnDoe().run();
     }
 }
