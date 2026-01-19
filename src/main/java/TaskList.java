@@ -7,46 +7,47 @@ class TaskList {
         tasklist = new ArrayList<Task>();
     }
 
-    public void addTask(Task task) {
+    public void addTask(Task task, Ui ui) {
         tasklist.add(task);
-        System.out.printf("  Got it. I've added this task:\n"
+        ui.printSuccess(String.format("  Got it. I've added this task:\n"
                 + "    %s\n"
                 + "  Now you have %d tasks in the list.\n\n> ",
                 task.toString(),
-                tasklist.size());
+                tasklist.size()));
     }
 
-    public void deleteTask(int index) {
+    public void deleteTask(int index, Ui ui) {
         Task task = tasklist.get(index);
         tasklist.remove(index);
-        System.out.printf("  Noted. I've removed this task:\n"
+        ui.printSuccess(String.format("  Noted. I've removed this task:\n"
                 + "    %s\n"
                 + "  Now you have %d tasks in the list.\n\n> ",
                 task.toString(),
-                tasklist.size());
+                tasklist.size()));
     }
 
-    public void markTask(int index) {
+    public void markTask(int index, Ui ui) {
         tasklist.get(index).markAsDone();
-        System.out.printf("  Nice! I've marked this task as done:\n"
+        ui.printSuccess(String.format("  Nice! I've marked this task as done:\n"
                 + "    %s\n\n> ",
-                tasklist.get(index).toString());
+                tasklist.get(index).toString()));
     }
 
-    public void unmarkTask(int index) {
+    public void unmarkTask(int index, Ui ui) {
         tasklist.get(index).markAsNotDone();
-        System.out.printf("  OK, I've marked this task as not done yet:\n"
+        ui.printSuccess(String.format("  OK, I've marked this task as not done yet:\n"
                 + "    %s\n\n> ",
-                tasklist.get(index).toString());
+                tasklist.get(index).toString()));
     }
 
-    public void printTasks() {
-        System.out.printf("  Here are the tasks in your list:\n");
+    public void printTasks(Ui ui) {
+        String output = "  Here are the tasks in your list:\n";
         for (int i = 0; i < tasklist.size(); i++) {
-            System.out.printf("    %d. %s\n",
+            output += String.format("    %d. %s\n",
                     i + 1,
                     tasklist.get(i).toString());
         }
-        System.out.printf("\n> ");
+        output += "\n> ";
+        ui.printSuccess(output);
     }
 }
