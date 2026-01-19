@@ -22,6 +22,14 @@ class Ui {
         System.out.printf("  Bye. Hope to see you again soon!\n");
     }
 
+    public void printSuccess(String message) {
+        System.out.printf(message);
+    }
+
+    public void printError(String message) {
+        System.out.printf(message);
+    }
+
     public void printUnknownCommandHelp() {
         System.out.printf("  Enter 'help' for a list of all available commands.\n\n> ");
     }
