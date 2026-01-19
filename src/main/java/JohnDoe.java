@@ -18,10 +18,10 @@ public class JohnDoe {
                 command.run(tasklist, ui);
                 isBye = command.isBye();
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                System.out.printf("  Task number does not exist.\n"
+                ui.printError("  Task number does not exist.\n"
                         + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ");
             } catch (IllegalArgumentException e) {
-                System.out.printf(e.getMessage());
+                ui.printError(e.getMessage());
             }
         }
     }
