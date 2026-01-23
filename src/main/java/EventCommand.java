@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 class EventCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'event' for more help.\n\n> ";
@@ -52,7 +55,15 @@ class EventCommand extends Command {
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, fromIndex));
         String start = String.join(" ", Arrays.copyOfRange(tokens, fromIndex + 1, toIndex));
         String end = String.join(" ", Arrays.copyOfRange(tokens, toIndex + 1, tokens.length));
-        opTask = Optional.of(new Event(taskName, start, end));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+        try {
+            opTask = Optional.of(new Event(taskName,
+                    LocalDateTime.parse(start, formatter),
+                    LocalDateTime.parse(end, formatter)));
+        } catch (DateTimeParseException e) {
+            throw new JohnDoeException("  Invalid date & time format.\n" + HELP_SUFFIX);
+        }
     }
 
     public void run(TaskList taskList, Ui ui) {

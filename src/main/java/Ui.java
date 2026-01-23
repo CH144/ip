@@ -56,14 +56,14 @@ class Ui {
 
     public void printDeadlineHelp() {
         System.out.printf("  info    : add a task with a deadline.\n"
-                + "  usage   : deadline TASK_NAME /by DEADLINE\n"
-                + "  example : deadline week 3 iP /by 30 Jan\n\n> ");
+                + "  usage   : deadline TASK_NAME /by dd/MM/yyyy HHmm\n"
+                + "  example : deadline week 3 iP /by 30/01/2026 1600\n\n> ");
     }
 
     public void printEventHelp() {
         System.out.printf("  info    : add a task with a start and end.\n"
-                + "  usage   : event TASK_NAME /from START_TIME /to END_TIME\n"
-                + "  example : event tP meeting /from Mon 10am /to 12nn\n\n> ");
+                + "  usage   : event TASK_NAME /from dd/MM/yyyy HHmm /to dd/MM/yyyy HHmm\n"
+                + "  example : event tP meeting /from 30/01/2026 1800 /to 30/01/2026 1900\n\n> ");
     }
 
     public void printDeleteHelp() {
