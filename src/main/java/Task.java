@@ -15,6 +15,12 @@ class Task {
         isDone = false;
     }
 
+    public String toFileEntry() {
+        return String.format("%s | %s",
+                isDone ? '1' : '0',
+                taskName);
+    }
+
     @Override
     public String toString() {
         return String.format("[%s] %s",
