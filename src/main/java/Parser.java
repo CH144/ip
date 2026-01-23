@@ -1,3 +1,7 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 class Parser {
     private Parser() {
         // intentionally blank
@@ -105,17 +109,22 @@ class Parser {
                 + "  and DEADLINE is of the format 'yyyy-MM-dd HHmm', such as: '2026-01-01 1630'\n";
 
         if (tokens.length != 4) {
-            throw new JohnDoeException(errorMessage);
+                throw new JohnDoeException(errorMessage);
         }
 
-        Deadline deadline = new Deadline(tokens[2].strip(), tokens[3].strip());
-        switch (tokens[1].strip()) {
-        case "1":
-            deadline.markAsDone();
-            return deadline;
-        case "0":
-            return deadline;
-        default:
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        try {
+            Deadline d = new Deadline(tokens[2].strip(), LocalDateTime.parse(tokens[3].strip(), formatter));
+            switch (tokens[1].strip()) {
+            case "1":
+                d.markAsDone();
+                return d;
+            case "0":
+                return d;
+            default:
+                throw new JohnDoeException(errorMessage);
+            }
+        } catch (DateTimeParseException e) {
             throw new JohnDoeException(errorMessage);
         }
     }
@@ -132,14 +141,22 @@ class Parser {
         }
 
         String[] timings = tokens[3].split("\\~", 2);
-        Event event = new Event(tokens[2].strip(), timings[0].strip(), timings[1].strip());
-        switch (tokens[1].strip()) {
-        case "1":
-            event.markAsDone();
-            return event;
-        case "0":
-            return event;
-        default:
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        try {
+            Event e = new Event(tokens[2].strip(),
+                    LocalDateTime.parse(timings[0].strip(), formatter),
+                    LocalDateTime.parse(timings[1].strip(), formatter));
+
+            switch (tokens[1].strip()) {
+            case "1":
+                e.markAsDone();
+                return e;
+            case "0":
+                return e;
+            default:
+                throw new JohnDoeException(errorMessage);
+            }
+        } catch (DateTimeParseException e) {
             throw new JohnDoeException(errorMessage);
         }
     }

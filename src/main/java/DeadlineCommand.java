@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 class DeadlineCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
@@ -39,7 +42,13 @@ class DeadlineCommand extends Command {
 
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, byIndex));
         String deadline = String.join(" ", Arrays.copyOfRange(tokens, byIndex + 1, tokens.length));
-        opTask = Optional.of(new Deadline(taskName, deadline));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+        try {
+            opTask = Optional.of(new Deadline(taskName, LocalDateTime.parse(deadline, formatter)));
+        } catch (DateTimeParseException e) {
+            throw new JohnDoeException("  Invalid date & time format.\n" + HELP_SUFFIX);
+        }
     }
 
     public void run(TaskList taskList, Ui ui) {
