@@ -1,32 +1,38 @@
 public class JohnDoe {
     private TaskList taskList;
     private Ui ui;
+    private Storage storage;
 
-    private JohnDoe() {
+    private JohnDoe(String s) {
         taskList = new TaskList();
         ui = new Ui();
+        storage =  new Storage(s);
     }
 
     private void run() {
+        storage.read(taskList, ui);
         ui.printGreeting();
 
         boolean isBye = false;
         while (!isBye) {
             try {
                 String userInput = ui.readUserInput();
-                Command command = Parser.parse(userInput);
+                Command command = Parser.inputToCommand(userInput);
                 command.run(taskList, ui);
                 isBye = command.isBye();
-            } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                ui.printError("  Task number does not exist.\n"
-                        + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ");
-            } catch (IllegalArgumentException e) {
+            } catch (JohnDoeException e) {
                 ui.printError(e.getMessage());
             }
         }
+
+        storage.write(taskList, ui);
     }
 
     public static void main(String[] args) {
-        new JohnDoe().run();
+        if (args.length > 0) {
+            new JohnDoe("./" + args[0]).run();
+        } else {
+            new JohnDoe("./data/tasks.txt").run();
+        }
     }
 }
