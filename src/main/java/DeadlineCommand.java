@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 class DeadlineCommand extends Command {
+    private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
     private Optional<Task> opTask;
 
     public DeadlineCommand() {
@@ -13,29 +14,27 @@ class DeadlineCommand extends Command {
     public DeadlineCommand(String input) {
         super(false);
 
-        String s = "  Enter 'deadline' for more help.\n\n> ";
-
         String[] tokens = input.split("\\s+");
 
         for (String token : tokens) {
             if (token != null && !token.equals("/by") && token.contains("/by")) {
                 throw new IllegalArgumentException(
-                        "  There should be spaces before and after '/by'.\n" + s);
+                        "  There should be spaces before and after '/by'.\n" + HELP_SUFFIX);
             }
         }
 
         if (Collections.frequency(Arrays.asList(tokens), "/by") != 1) {
-            throw new IllegalArgumentException("  Exactly one '/by' must be used.\n" + s);
+            throw new IllegalArgumentException("  Exactly one '/by' must be used.\n" + HELP_SUFFIX);
         }
 
         int byIndex = Arrays.asList(tokens).indexOf("/by");
 
         if (byIndex == 0) {
-            throw new IllegalArgumentException("  Please provide a task name.\n" + s);
+            throw new IllegalArgumentException("  Please provide a task name.\n" + HELP_SUFFIX);
         }
 
         if (byIndex == tokens.length - 1) {
-            throw new IllegalArgumentException("  Please provide a deadline.\n" + s);
+            throw new IllegalArgumentException("  Please provide a deadline.\n" + HELP_SUFFIX);
         }
 
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, byIndex));
@@ -43,9 +42,9 @@ class DeadlineCommand extends Command {
         opTask = Optional.of(new Deadline(taskName, deadline));
     }
 
-    public void run(TaskList tasklist, Ui ui) {
+    public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {
-            tasklist.addTask(opTask.get(), ui);
+            taskList.addTask(opTask.get(), ui);
         } else {
             ui.printDeadlineHelp();
         }

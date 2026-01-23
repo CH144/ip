@@ -1,9 +1,9 @@
 public class JohnDoe {
-    private TaskList tasklist;
+    private TaskList taskList;
     private Ui ui;
 
     private JohnDoe() {
-        tasklist = new TaskList();
+        taskList = new TaskList();
         ui = new Ui();
     }
 
@@ -15,7 +15,7 @@ public class JohnDoe {
             try {
                 String userInput = ui.readUserInput();
                 Command command = Parser.parse(userInput);
-                command.run(tasklist, ui);
+                command.run(taskList, ui);
                 isBye = command.isBye();
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
                 ui.printError("  Task number does not exist.\n"

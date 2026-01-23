@@ -13,9 +13,9 @@ class DeleteCommand extends Command {
         opInt = OptionalInt.of(Integer.parseInt(input) - 1);
     }
 
-    public void run(TaskList tasklist, Ui ui) {
+    public void run(TaskList taskList, Ui ui) {
         if (opInt.isPresent()) {
-            tasklist.deleteTask(opInt.getAsInt(), ui);
+            taskList.deleteTask(opInt.getAsInt(), ui);
         } else {
             ui.printDeleteHelp();
         }

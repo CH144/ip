@@ -3,7 +3,7 @@ class ListCommand extends Command {
         super(false);
     }
 
-    public void run(TaskList tasklist, Ui ui) {
-        tasklist.printTasks(ui);
+    public void run(TaskList taskList, Ui ui) {
+        taskList.printTasks(ui);
     }
 }

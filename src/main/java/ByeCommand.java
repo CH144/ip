@@ -3,7 +3,7 @@ class ByeCommand extends Command {
         super(true);
     }
 
-    public void run(TaskList tasklist, Ui ui) {
+    public void run(TaskList taskList, Ui ui) {
         ui.printFarewell();
     }
 }

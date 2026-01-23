@@ -1,51 +1,51 @@
 import java.util.ArrayList;
 
 class TaskList {
-    private ArrayList<Task> tasklist;
+    private ArrayList<Task> taskList;
 
     public TaskList() {
-        tasklist = new ArrayList<Task>();
+        taskList = new ArrayList<Task>();
     }
 
     public void addTask(Task task, Ui ui) {
-        tasklist.add(task);
+        taskList.add(task);
         ui.printSuccess(String.format("  Got it. I've added this task:\n"
                 + "    %s\n"
                 + "  Now you have %d tasks in the list.\n\n> ",
                 task.toString(),
-                tasklist.size()));
+                taskList.size()));
     }
 
     public void deleteTask(int index, Ui ui) {
-        Task task = tasklist.get(index);
-        tasklist.remove(index);
+        Task task = taskList.get(index);
+        taskList.remove(index);
         ui.printSuccess(String.format("  Noted. I've removed this task:\n"
                 + "    %s\n"
                 + "  Now you have %d tasks in the list.\n\n> ",
                 task.toString(),
-                tasklist.size()));
+                taskList.size()));
     }
 
     public void markTask(int index, Ui ui) {
-        tasklist.get(index).markAsDone();
+        taskList.get(index).markAsDone();
         ui.printSuccess(String.format("  Nice! I've marked this task as done:\n"
                 + "    %s\n\n> ",
-                tasklist.get(index).toString()));
+                taskList.get(index).toString()));
     }
 
     public void unmarkTask(int index, Ui ui) {
-        tasklist.get(index).markAsNotDone();
+        taskList.get(index).markAsNotDone();
         ui.printSuccess(String.format("  OK, I've marked this task as not done yet:\n"
                 + "    %s\n\n> ",
-                tasklist.get(index).toString()));
+                taskList.get(index).toString()));
     }
 
     public void printTasks(Ui ui) {
         String output = "  Here are the tasks in your list:\n";
-        for (int i = 0; i < tasklist.size(); i++) {
+        for (int i = 0; i < taskList.size(); i++) {
             output += String.format("    %d. %s\n",
                     i + 1,
-                    tasklist.get(i).toString());
+                    taskList.get(i).toString());
         }
         output += "\n> ";
         ui.printSuccess(output);
