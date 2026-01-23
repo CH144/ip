@@ -11,7 +11,7 @@ class EventCommand extends Command {
         opTask = Optional.empty();
     }
 
-    public EventCommand(String input) {
+    public EventCommand(String input) throws JohnDoeException {
         super(false);
 
         String[] tokens = input.split("\\s+");
@@ -19,14 +19,14 @@ class EventCommand extends Command {
         for (String token : tokens) {
             if ((token != null && !token.equals("/from") && token.contains("/from"))
                     || (token != null && !token.equals("/to") && token.contains("/to"))) {
-                throw new IllegalArgumentException(
+                throw new JohnDoeException(
                         "  There should be spaces before and after '/from' and '/to'.\n" + HELP_SUFFIX);
             }
         }
 
         if (Collections.frequency(Arrays.asList(tokens), "/from") != 1
                 || Collections.frequency(Arrays.asList(tokens), "/to") != 1) {
-            throw new IllegalArgumentException(
+            throw new JohnDoeException(
                         "  Exactly one '/from' and one '/to' must be used.\n" + HELP_SUFFIX);
         }
 
@@ -34,19 +34,19 @@ class EventCommand extends Command {
         int toIndex = Arrays.asList(tokens).indexOf("/to");
 
         if (fromIndex > toIndex) {
-            throw new IllegalArgumentException("  '/from' must be before '/to'.\n" + HELP_SUFFIX);
+            throw new JohnDoeException("  '/from' must be before '/to'.\n" + HELP_SUFFIX);
         }
 
         if (fromIndex == 0) {
-            throw new IllegalArgumentException("  Please provide a task name.\n" + HELP_SUFFIX);
+            throw new JohnDoeException("  Please provide a task name.\n" + HELP_SUFFIX);
         }
 
         if (fromIndex == toIndex - 1) {
-            throw new IllegalArgumentException("  Please provide a start time.\n" + HELP_SUFFIX);
+            throw new JohnDoeException("  Please provide a start time.\n" + HELP_SUFFIX);
         }
 
         if (toIndex == tokens.length - 1) {
-            throw new IllegalArgumentException("  Please provide an end time.\n" + HELP_SUFFIX);
+            throw new JohnDoeException("  Please provide an end time.\n" + HELP_SUFFIX);
         }
 
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, fromIndex));

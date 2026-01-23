@@ -9,5 +9,5 @@ abstract class Command {
         return isBye;
     }
 
-    public abstract void run(TaskList taskList, Ui ui);
+    public abstract void run(TaskList taskList, Ui ui) throws JohnDoeException;
 }
