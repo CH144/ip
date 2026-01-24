@@ -31,6 +31,13 @@ application {
     mainClass.set("johndoe.ui.JohnDoe")
 }
 
+jar {
+    archiveBaseName.set('johndoe')
+    manifest {
+        attributes('Main-Class': 'johndoe.ui.JohnDoe')
+    }
+}
+
 shadowJar {
     archiveBaseName = "johndoe"
     archiveClassifier = null
