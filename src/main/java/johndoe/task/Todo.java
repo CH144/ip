@@ -1,6 +1,12 @@
 package johndoe.task;
 
+/**
+ * Todo is a basic task with no timings associated.
+ */
 public class Todo extends Task {
+    /**
+     * Constructor of the Todo class.
+     */
     public Todo(String taskName) {
         super(taskName);
     }

@@ -6,14 +6,23 @@ import johndoe.ui.JohnDoeException;
 
 import java.util.OptionalInt;
 
+/**
+ * MarkCommand can mark an existing task as done.
+ */
 public class MarkCommand extends Command {
     private OptionalInt opInt;
 
+    /**
+     * Constructor for the MarkCommand for printing help.
+     */
     public MarkCommand() {
         super(false);
         opInt = OptionalInt.empty();
     }
 
+    /**
+     * Constructor for the MarkCommand for marking a task.
+     */
     public MarkCommand(String input) throws JohnDoeException {
         super(false);
         try {
@@ -24,6 +33,9 @@ public class MarkCommand extends Command {
         }
     }
 
+    /**
+     * Marks the task as done, or prints the help.
+     */
     public void run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {
             taskList.markTask(opInt.getAsInt(), ui);

@@ -21,6 +21,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Parser interprets a given input into the required object.
+ */
 public class Parser {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
@@ -29,6 +32,9 @@ public class Parser {
         // intentionally blank
     }
 
+    /**
+     * Parses a user input into a command object.
+     */
     public static Command inputToCommand(String userInput) throws JohnDoeException {
         String[] tokens = userInput.split("\\s+", 2);
         String command = tokens[0];
@@ -76,6 +82,9 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a file entry to a task object.
+     */
     public static Task entryToTask(String entry) throws JohnDoeException {
         String errorMessage = "  Invalid entry: " + entry + "\n";
 

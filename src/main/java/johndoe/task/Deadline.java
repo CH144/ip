@@ -3,11 +3,17 @@ package johndoe.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Deadline is a task with a deadline.
+ */
 public class Deadline extends Task {
     private static final DateTimeFormatter FORMATTER=
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime deadline;
 
+    /**
+     * Constructor of the Deadline class.
+     */
     public Deadline(String taskName, LocalDateTime deadline) {
         super(taskName);
         this.deadline = deadline;

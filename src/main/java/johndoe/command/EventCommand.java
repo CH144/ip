@@ -13,15 +13,24 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * EventCommand can add an Event object to the records.
+ */
 public class EventCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'event' for more help.\n\n> ";
     private Optional<Task> opTask;
 
+    /**
+     * Constructor for the EventCommand class for printing help.
+     */
     public EventCommand() {
         super(false);
         opTask = Optional.empty();
     }
 
+    /**
+     * Constructor for the EventCommand class for adding an event.
+     */
     public EventCommand(String input) throws JohnDoeException {
         super(false);
 
@@ -73,6 +82,9 @@ public class EventCommand extends Command {
         }
     }
 
+    /**
+     * Adds an event, or prints the help for the command.
+     */
     public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {
             taskList.addTask(opTask.get(), ui);
