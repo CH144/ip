@@ -67,6 +67,7 @@ public class Ui {
     public void printHelp() {
         System.out.printf("  Available commands:\n"
                 + "    list\n"
+                + "    find\n"
                 + "    todo\n"
                 + "    deadline\n"
                 + "    event\n"
@@ -76,6 +77,15 @@ public class Ui {
                 + "    bye\n"
                 + "  For more details, enter a command with no arguments.\n"
                 + "  Commands are case-sensitive.\n\n> ");
+    }
+
+    /**
+     * Prints the help for the 'find' command.
+     */
+    public void printFindHelp() {
+        System.out.printf("  info    : lists tasks that contain keywords.\n"
+                + "  usage   : find KEY_WORDS\n"
+                + "  example : find project meeting\n\n> ");
     }
 
     /**

@@ -27,6 +27,13 @@ public class Task {
     }
 
     /**
+     * Returns if the task name contains the substring.
+     */
+    public boolean taskNameContains(String s) {
+        return taskName.contains(s);
+    }
+
+    /**
      * Returns the file entry representation of the task.
      */
     public String toFileEntry() {

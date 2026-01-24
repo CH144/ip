@@ -112,6 +112,22 @@ public class TaskList {
     }
 
     /**
+     * Prints all recorded tasks that contain the keywords.
+     */
+    public void findTasks(String keyWords, Ui ui) {
+        String output = String.format("  Here are the tasks that contain '%s':\n", keyWords);
+        for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).taskNameContains(keyWords)) {
+                output += String.format("    %d. %s\n",
+                        i + 1,
+                        taskList.get(i).toString());
+            }
+        }
+        output += "\n> ";
+        ui.printSuccess(output);
+    }
+
+    /**
      * Returns the tasks in the format for saving to a file.
      */ 
     public List<String> toFileEntries() {
