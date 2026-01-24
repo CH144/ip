@@ -1,7 +1,7 @@
 package johndoe.command;
 
 import johndoe.command.EventCommand;
-import johndoe.ui.JohnDoeException;
+import johndoe.exception.JohnDoeException;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
