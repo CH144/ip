@@ -1,11 +1,11 @@
 package johndoe.ui;
 
-import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
-import johndoe.storage.Storage;
-import johndoe.parser.Parser;
 import johndoe.command.Command;
+import johndoe.parser.Parser;
+import johndoe.storage.Storage;
+import johndoe.tasklist.TaskList;
 import johndoe.ui.JohnDoeException;
+import johndoe.ui.Ui;
 
 /**
  * JohnDoe is a task managing app.

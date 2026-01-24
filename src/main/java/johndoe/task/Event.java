@@ -2,8 +2,8 @@ package johndoe.task;
 
 import johndoe.ui.JohnDoeException;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 /**
  * Event is a task that has a start and end time.

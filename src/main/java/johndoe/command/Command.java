@@ -1,8 +1,8 @@
 package johndoe.command;
 
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 import johndoe.ui.JohnDoeException;
+import johndoe.ui.Ui;
 
 /**
  * Command child classes handle the required calls to TaskList and Ui objects.
