@@ -13,15 +13,24 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * DeadlineCommand can add a Deadline object to the records.
+ */
 public class DeadlineCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
     private Optional<Task> opTask;
 
+    /**
+     * Constructor for the DeadlineCommand class for printing help.
+     */
     public DeadlineCommand() {
         super(false);
         opTask = Optional.empty();
     }
 
+    /**
+     * Constructor for the Deadline class for adding deadline.
+     */
     public DeadlineCommand(String input) throws JohnDoeException {
         super(false);
 
@@ -58,6 +67,9 @@ public class DeadlineCommand extends Command {
         }
     }
 
+    /**
+     * Adds a Deadline object, or prints the help for the command.
+     */
     public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {
             taskList.addTask(opTask.get(), ui);

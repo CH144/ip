@@ -5,12 +5,18 @@ import johndoe.ui.JohnDoeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Event is a task that has a start and end time.
+ */
 public class Event extends Task {
     private static final DateTimeFormatter FORMATTER = 
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime start;
     private LocalDateTime end;
 
+    /**
+     * Constructor of the Event class.
+     */
     public Event(String taskName, LocalDateTime start, LocalDateTime end) throws JohnDoeException {
         super(taskName);
         if (start.isAfter(end)) {

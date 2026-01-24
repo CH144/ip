@@ -1,5 +1,8 @@
 package johndoe.task;
 
+/**
+ * Task records the task name and task completion.
+ */
 public class Task {
     private String taskName;
     private boolean isDone;
@@ -9,20 +12,32 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Marks the task as done.
+     */
     public void markAsDone() {
         isDone = true;    
     }
 
+    /**
+     * Marks the task as not done.
+     */
     public void markAsNotDone() {
         isDone = false;
     }
 
+    /**
+     * Returns the file entry representation of the task.
+     */
     public String toFileEntry() {
         return String.format("%s | %s",
                 isDone ? '1' : '0',
                 taskName);
     }
 
+    /**
+     * Returns the live record representation of the task.
+     */
     @Override
     public String toString() {
         return String.format("[%s] %s",

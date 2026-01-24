@@ -7,19 +7,36 @@ import johndoe.ui.JohnDoeException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TaskList manages operations to the recorded tasks.
+ */
 public class TaskList {
     private static final String OOB_ERROR = "  Task number does not exist.\n"
             + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ";
     private ArrayList<Task> taskList;
 
+    /**
+     * Constructor of the TaskList class.
+     * Creates a new ArrayList of Task to be updated.
+     */
     public TaskList() {
         taskList = new ArrayList<Task>();
     }
 
+    /**
+     * Adds a task.
+     * Used when reading data from a file.
+     * Has no output.
+     */
     public void addTask(Task task) {
         taskList.add(task);
     }
 
+    /**
+     * Adds a task.
+     * Used when user commands.
+     * Has output on success.
+     */
     public void addTask(Task task, Ui ui) {
         taskList.add(task);
         ui.printSuccess(String.format("  Got it. I've added this task:\n"
@@ -29,6 +46,11 @@ public class TaskList {
                 taskList.size()));
     }
 
+    /**
+     * Deletes a task.
+     * Has output on success.
+     * Throws JohnDoeException if the index is out of bounds.
+     */
     public void deleteTask(int index, Ui ui) throws JohnDoeException {
         try {
             Task task = taskList.get(index);
@@ -43,6 +65,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Marks a task as done.
+     * Has output on success.
+     * Throws JohnDoeException if the index is out of bounds.
+     */
     public void markTask(int index, Ui ui) throws JohnDoeException {
         try {
             taskList.get(index).markAsDone();
@@ -54,6 +81,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Marks a task as not done.
+     * Has output on success.
+     * Throws JohnDoeException if the index is out of bounds.
+     */
     public void unmarkTask(int index, Ui ui) throws JohnDoeException {
         try {
             taskList.get(index).markAsNotDone();
@@ -65,6 +97,9 @@ public class TaskList {
         }
     }
 
+    /**
+     * Prints all recorded tasks in the order of record.
+     */
     public void printTasks(Ui ui) {
         String output = "  Here are the tasks in your list:\n";
         for (int i = 0; i < taskList.size(); i++) {
@@ -76,6 +111,9 @@ public class TaskList {
         ui.printSuccess(output);
     }
 
+    /**
+     * Returns the tasks in the format for saving to a file.
+     */ 
     public List<String> toFileEntries() {
         return taskList.stream().map(t -> t.toFileEntry()).toList();
     }

@@ -6,14 +6,23 @@ import johndoe.ui.JohnDoeException;
 
 import java.util.OptionalInt;
 
+/**
+ * DeleteCommand can remove an existing task from the records.
+ */
 public class DeleteCommand extends Command {
     private OptionalInt opInt;
 
+    /**
+     * Constructor for the DeleteCommand class for printing help.
+     */
     public DeleteCommand() {
         super(false);
         opInt = OptionalInt.empty();
     }
 
+    /**
+     * Constructor for the DeleteCommand class for deleting a task.
+     */
     public DeleteCommand(String input) throws JohnDoeException {
         super(false);
         try {
@@ -24,6 +33,9 @@ public class DeleteCommand extends Command {
         }
     }
 
+    /**
+     * Deletes the task, or prints the help for the command.
+     */
     public void run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {
             taskList.deleteTask(opInt.getAsInt(), ui);
