@@ -9,6 +9,7 @@ import johndoe.ui.Ui;
 public class UnknownCommand extends Command {
     /**
      * Constructor of the UnknownCommand class.
+     */
     public UnknownCommand() {
         super(false);
     }
