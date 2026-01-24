@@ -1,14 +1,20 @@
+package johndoe.command;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.ui.JohnDoeException;
+
 import java.util.OptionalInt;
 
-class MarkCommand extends Command {
+public class UnmarkCommand extends Command {
     private OptionalInt opInt;
 
-    public MarkCommand() {
+    public UnmarkCommand() {
         super(false);
         opInt = OptionalInt.empty();
     }
 
-    public MarkCommand(String input) throws JohnDoeException {
+    public UnmarkCommand(String input) throws JohnDoeException {
         super(false);
         try {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
@@ -20,9 +26,9 @@ class MarkCommand extends Command {
 
     public void run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {
-            taskList.markTask(opInt.getAsInt(), ui);
+            taskList.unmarkTask(opInt.getAsInt(), ui);
         } else {
-            ui.printMarkHelp();
+            ui.printUnmarkHelp();
         }
     }
 }

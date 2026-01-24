@@ -1,5 +1,7 @@
-class Todo extends Task {
-    Todo(String taskName) {
+package johndoe.task;
+
+public class Todo extends Task {
+    public Todo(String taskName) {
         super(taskName);
     }
 

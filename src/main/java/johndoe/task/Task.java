@@ -1,17 +1,19 @@
-class Task {
+package johndoe.task;
+
+public class Task {
     private String taskName;
     private boolean isDone;
 
-    Task(String taskName) {
+    protected Task(String taskName) {
         this.taskName = taskName;
         this.isDone = false;
     }
 
-    void markAsDone() {
+    public void markAsDone() {
         isDone = true;    
     }
 
-    void markAsNotDone() {
+    public void markAsNotDone() {
         isDone = false;
     }
 

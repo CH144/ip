@@ -1,6 +1,12 @@
+package johndoe.command;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.ui.JohnDoeException;
+
 import java.util.OptionalInt;
 
-class DeleteCommand extends Command {
+public class DeleteCommand extends Command {
     private OptionalInt opInt;
 
     public DeleteCommand() {

@@ -1,4 +1,10 @@
-abstract class Command {
+package johndoe.command;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.ui.JohnDoeException;
+
+public abstract class Command {
     private boolean isBye;
 
     protected Command(boolean isBye) {

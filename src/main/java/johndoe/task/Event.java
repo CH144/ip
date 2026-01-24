@@ -1,13 +1,17 @@
+package johndoe.task;
+
+import johndoe.ui.JohnDoeException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class Event extends Task {
+public class Event extends Task {
     private static final DateTimeFormatter FORMATTER = 
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime start;
     private LocalDateTime end;
 
-    Event(String taskName, LocalDateTime start, LocalDateTime end) throws JohnDoeException {
+    public Event(String taskName, LocalDateTime start, LocalDateTime end) throws JohnDoeException {
         super(taskName);
         if (start.isAfter(end)) {
             throw new JohnDoeException("  Start cannot be after end.\n"

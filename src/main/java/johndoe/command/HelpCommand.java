@@ -1,4 +1,9 @@
-class HelpCommand extends Command {
+package johndoe.command;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+
+public class HelpCommand extends Command {
     public HelpCommand() {
         super(false);
     }

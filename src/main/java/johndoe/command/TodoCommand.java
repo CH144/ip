@@ -1,7 +1,14 @@
+package johndoe.command;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.task.Task;
+import johndoe.task.Todo;
+
 import java.util.Arrays;
 import java.util.Optional;
 
-class TodoCommand extends Command {
+public class TodoCommand extends Command {
     private Optional<Task> opTask;
 
     public TodoCommand() {

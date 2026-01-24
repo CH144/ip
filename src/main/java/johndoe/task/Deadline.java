@@ -1,12 +1,14 @@
+package johndoe.task;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class Deadline extends Task {
+public class Deadline extends Task {
     private static final DateTimeFormatter FORMATTER=
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime deadline;
 
-    Deadline(String taskName, LocalDateTime deadline) {
+    public Deadline(String taskName, LocalDateTime deadline) {
         super(taskName);
         this.deadline = deadline;
     }

@@ -1,7 +1,13 @@
+package johndoe.tasklist;
+
+import johndoe.task.Task;
+import johndoe.ui.Ui;
+import johndoe.ui.JohnDoeException;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class TaskList {
+public class TaskList {
     private static final String OOB_ERROR = "  Task number does not exist.\n"
             + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ";
     private ArrayList<Task> taskList;

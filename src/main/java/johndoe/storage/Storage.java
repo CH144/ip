@@ -1,3 +1,11 @@
+package johndoe.storage;
+
+import johndoe.task.Task;
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.ui.JohnDoeException;
+import johndoe.parser.Parser;
+
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -5,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-class Storage {
+public class Storage {
     private static final String LOAD_ERROR =
             "  Failed to load tasks. Please try again.\n";
     private static final String SAVE_ERROR =

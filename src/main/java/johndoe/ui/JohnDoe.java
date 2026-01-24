@@ -1,3 +1,12 @@
+package johndoe.ui;
+
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
+import johndoe.storage.Storage;
+import johndoe.parser.Parser;
+import johndoe.command.Command;
+import johndoe.ui.JohnDoeException;
+
 public class JohnDoe {
     private TaskList taskList;
     private Ui ui;

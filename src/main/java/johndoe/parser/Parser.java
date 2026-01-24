@@ -1,8 +1,27 @@
+package johndoe.parser;
+
+import johndoe.task.Task;
+import johndoe.task.Todo;
+import johndoe.task.Deadline;
+import johndoe.task.Event;
+import johndoe.command.Command;
+import johndoe.command.ByeCommand;
+import johndoe.command.DeadlineCommand;
+import johndoe.command.DeleteCommand;
+import johndoe.command.EventCommand;
+import johndoe.command.HelpCommand;
+import johndoe.command.ListCommand;
+import johndoe.command.TodoCommand;
+import johndoe.command.MarkCommand;
+import johndoe.command.UnknownCommand;
+import johndoe.command.UnmarkCommand;
+import johndoe.ui.JohnDoeException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-class Parser {
+public class Parser {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
