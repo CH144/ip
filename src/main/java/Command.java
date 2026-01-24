@@ -1,5 +1,5 @@
 abstract class Command {
-    protected boolean isBye;
+    private boolean isBye;
 
     protected Command(boolean isBye) {
         this.isBye = isBye;

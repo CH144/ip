@@ -3,6 +3,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 class Parser {
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+
     private Parser() {
         // intentionally blank
     }
@@ -85,11 +88,13 @@ class Parser {
             throw new JohnDoeException(errorMessage);
         }
 
-        if (tokens[2].strip().equals("")) {
+        String taskName = tokens[2].strip();
+
+        if (taskName.equals("")) {
             throw new JohnDoeException(errorMessage);
         }
 
-        Todo todo = new Todo(tokens[2].strip());
+        Todo todo = new Todo(taskName);
         switch (tokens[1].strip()) {
         case "1":
             todo.markAsDone();
@@ -109,18 +114,25 @@ class Parser {
                 + "  and DEADLINE is of the format 'yyyy-MM-dd HHmm', such as: '2026-01-01 1630'\n";
 
         if (tokens.length != 4) {
-                throw new JohnDoeException(errorMessage);
+            throw new JohnDoeException(errorMessage);
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        String taskName = tokens[2].strip();
+
+        if (taskName.equals("")) {
+            throw new JohnDoeException(errorMessage);
+        }
+
         try {
-            Deadline d = new Deadline(tokens[2].strip(), LocalDateTime.parse(tokens[3].strip(), formatter));
+            Deadline deadline = new Deadline(
+                    taskName,
+                    LocalDateTime.parse(tokens[3].strip(), FORMATTER));
             switch (tokens[1].strip()) {
             case "1":
-                d.markAsDone();
-                return d;
+                deadline.markAsDone();
+                return deadline;
             case "0":
-                return d;
+                return deadline;
             default:
                 throw new JohnDoeException(errorMessage);
             }
@@ -140,19 +152,24 @@ class Parser {
             throw new JohnDoeException(errorMessage);
         }
 
+        String taskName = tokens[2].strip();
         String[] timings = tokens[3].split("\\~", 2);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        try {
-            Event e = new Event(tokens[2].strip(),
-                    LocalDateTime.parse(timings[0].strip(), formatter),
-                    LocalDateTime.parse(timings[1].strip(), formatter));
 
+        if (taskName.equals("") || timings.length != 2) {
+            throw new JohnDoeException(errorMessage);
+        }
+
+        try {
+            Event event = new Event(
+                    taskName,
+                    LocalDateTime.parse(timings[0].strip(), FORMATTER),
+                    LocalDateTime.parse(timings[1].strip(), FORMATTER));
             switch (tokens[1].strip()) {
             case "1":
-                e.markAsDone();
-                return e;
+                event.markAsDone();
+                return event;
             case "0":
-                return e;
+                return event;
             default:
                 throw new JohnDoeException(errorMessage);
             }

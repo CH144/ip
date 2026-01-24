@@ -2,6 +2,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 class Deadline extends Task {
+    private static final DateTimeFormatter FORMATTER=
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime deadline;
 
     Deadline(String taskName, LocalDateTime deadline) {
@@ -13,13 +15,13 @@ class Deadline extends Task {
     public String toFileEntry() {
         return String.format("D | %s | %s",
             super.toFileEntry(),
-            deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
+            deadline.format(FORMATTER));
     }
 
     @Override
     public String toString() {
         return String.format("[D]%s (by: %s)",
                 super.toString(),
-                deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
+                deadline.format(FORMATTER));
     }
 }

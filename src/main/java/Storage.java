@@ -6,8 +6,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 class Storage {
-    private static final String LOAD_ERROR = "  Failed to load tasks. Please try again.\n";
-    private static final String SAVE_ERROR = "  Failed to save tasks. Please copy the tasklist manually.\n";
+    private static final String LOAD_ERROR =
+            "  Failed to load tasks. Please try again.\n";
+    private static final String SAVE_ERROR =
+            "  Failed to save tasks. Please copy the tasklist manually.\n";
     private Path filePath;
 
     public Storage(String filePath) {
