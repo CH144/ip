@@ -1,9 +1,9 @@
 package johndoe.command;
 
+import johndoe.exception.JohnDoeException;
 import johndoe.task.Event;
 import johndoe.task.Task;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.JohnDoeException;
 import johndoe.ui.Ui;
 
 import java.util.Arrays;

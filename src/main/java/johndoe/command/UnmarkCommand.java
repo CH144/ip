@@ -1,7 +1,7 @@
 package johndoe.command;
 
+import johndoe.exception.JohnDoeException;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.JohnDoeException;
 import johndoe.ui.Ui;
 
 import java.util.OptionalInt;

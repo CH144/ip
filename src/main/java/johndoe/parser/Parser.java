@@ -12,11 +12,11 @@ import johndoe.command.MarkCommand;
 import johndoe.command.TodoCommand;
 import johndoe.command.UnknownCommand;
 import johndoe.command.UnmarkCommand;
+import johndoe.exception.JohnDoeException;
 import johndoe.task.Deadline;
 import johndoe.task.Event;
 import johndoe.task.Task;
 import johndoe.task.Todo;
-import johndoe.ui.JohnDoeException;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

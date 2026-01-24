@@ -1,4 +1,4 @@
-package johndoe.ui;
+package johndoe.exception;
 
 /**
  * JohnDoeException is a custom exception for the JohnDoe app.

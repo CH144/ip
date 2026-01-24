@@ -1,6 +1,6 @@
 package johndoe.task;
 
-import johndoe.ui.JohnDoeException;
+import johndoe.exception.JohnDoeException;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;

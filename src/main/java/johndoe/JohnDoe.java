@@ -1,10 +1,10 @@
 package johndoe;
 
 import johndoe.command.Command;
+import johndoe.exception.JohnDoeException;
 import johndoe.parser.Parser;
 import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.JohnDoeException;
 import johndoe.ui.Ui;
 
 /**

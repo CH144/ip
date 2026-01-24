@@ -1,9 +1,9 @@
 package johndoe.storage;
 
+import johndoe.exception.JohnDoeException;
 import johndoe.parser.Parser;
 import johndoe.task.Task;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.JohnDoeException;
 import johndoe.ui.Ui;
 
 import java.io.BufferedReader;
