@@ -1,17 +1,17 @@
 package johndoe.command;
 
-import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
-import johndoe.ui.JohnDoeException;
-import johndoe.task.Task;
 import johndoe.task.Deadline;
+import johndoe.task.Task;
+import johndoe.tasklist.TaskList;
+import johndoe.ui.JohnDoeException;
+import johndoe.ui.Ui;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Optional;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class DeadlineCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";

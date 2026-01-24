@@ -1,8 +1,8 @@
 package johndoe.tasklist;
 
 import johndoe.task.Task;
-import johndoe.ui.Ui;
 import johndoe.ui.JohnDoeException;
+import johndoe.ui.Ui;
 
 import java.util.ArrayList;
 import java.util.List;

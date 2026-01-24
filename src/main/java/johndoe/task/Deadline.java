@@ -1,7 +1,7 @@
 package johndoe.task;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class Deadline extends Task {
     private static final DateTimeFormatter FORMATTER=

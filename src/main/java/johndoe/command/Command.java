@@ -1,8 +1,8 @@
 package johndoe.command;
 
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 import johndoe.ui.JohnDoeException;
+import johndoe.ui.Ui;
 
 public abstract class Command {
     private boolean isBye;

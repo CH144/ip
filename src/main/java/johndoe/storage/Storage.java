@@ -1,13 +1,13 @@
 package johndoe.storage;
 
+import johndoe.parser.Parser;
 import johndoe.task.Task;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 import johndoe.ui.JohnDoeException;
-import johndoe.parser.Parser;
+import johndoe.ui.Ui;
 
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

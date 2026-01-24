@@ -1,9 +1,9 @@
 package johndoe.command;
 
-import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 import johndoe.task.Task;
 import johndoe.task.Todo;
+import johndoe.tasklist.TaskList;
+import johndoe.ui.Ui;
 
 import java.util.Arrays;
 import java.util.Optional;
