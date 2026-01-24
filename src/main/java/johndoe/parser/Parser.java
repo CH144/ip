@@ -9,6 +9,7 @@ import johndoe.command.ByeCommand;
 import johndoe.command.DeadlineCommand;
 import johndoe.command.DeleteCommand;
 import johndoe.command.EventCommand;
+import johndoe.command.FindCommand;
 import johndoe.command.HelpCommand;
 import johndoe.command.ListCommand;
 import johndoe.command.TodoCommand;
@@ -35,6 +36,8 @@ public class Parser {
 
         if (tokens.length > 1) {
             switch (command) {
+            case "find":
+                return new FindCommand(tokens[1]);
             case "todo":
                 return new TodoCommand(tokens[1]);
             case "deadline":
@@ -58,6 +61,8 @@ public class Parser {
                 return new HelpCommand();
             case "list":
                 return new ListCommand();
+            case "find":
+                return new FindCommand();
             case "todo":
                 return new TodoCommand();
             case "deadline":

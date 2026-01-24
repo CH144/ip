@@ -17,6 +17,13 @@ public class Task {
         isDone = false;
     }
 
+    /**
+     * Returns if the task name contains the substring.
+     */
+    public boolean taskNameContains(String s) {
+        return taskName.contains(s);
+    }
+
     public String toFileEntry() {
         return String.format("%s | %s",
                 isDone ? '1' : '0',
