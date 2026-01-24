@@ -1,6 +1,5 @@
 package johndoe.command;
 
-import johndoe.task.Task;
 import johndoe.task.Todo;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
@@ -12,7 +11,7 @@ import java.util.Optional;
  * TodoCommand can add a todo task to the records.
  */
 public class TodoCommand extends Command {
-    private Optional<Task> opTask;
+    private Optional<Todo> opTask;
 
     /**
      * Constructor for the Todo class for printing help.

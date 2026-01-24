@@ -2,7 +2,6 @@ package johndoe.command;
 
 import johndoe.exception.JohnDoeException;
 import johndoe.task.Deadline;
-import johndoe.task.Task;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -18,7 +17,7 @@ import java.util.Optional;
  */
 public class DeadlineCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
-    private Optional<Task> opTask;
+    private Optional<Deadline> opTask;
 
     /**
      * Constructor for the DeadlineCommand class for printing help.

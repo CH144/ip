@@ -2,7 +2,6 @@ package johndoe.command;
 
 import johndoe.exception.JohnDoeException;
 import johndoe.task.Event;
-import johndoe.task.Task;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -18,7 +17,7 @@ import java.util.Optional;
  */
 public class EventCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'event' for more help.\n\n> ";
-    private Optional<Task> opTask;
+    private Optional<Event> opTask;
 
     /**
      * Constructor for the EventCommand class for printing help.
