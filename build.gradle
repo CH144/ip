@@ -28,13 +28,13 @@ test {
 }
 
 application {
-    mainClass.set("johndoe.ui.JohnDoe")
+    mainClass.set("johndoe.JohnDoe")
 }
 
 jar {
     archiveBaseName.set('johndoe')
     manifest {
-        attributes('Main-Class': 'johndoe.ui.JohnDoe')
+        attributes('Main-Class': 'johndoe.JohnDoe')
     }
 }
 

@@ -1,4 +1,4 @@
-package johndoe.ui;
+package johndoe;
 
 import johndoe.command.Command;
 import johndoe.parser.Parser;
