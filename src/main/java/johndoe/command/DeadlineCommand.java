@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
- * DeadlineCommand can add a Deadline object to the records.
+ * Represents the {@code Command} to add a {@code Deadline}.
  */
 public class DeadlineCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
     private Optional<Deadline> opTask;
 
     /**
-     * Constructor for the DeadlineCommand class for printing help.
+     * Creates a new {@code DeadlineCommand} that will print help.
      */
     public DeadlineCommand() {
         super(false);
@@ -28,7 +28,9 @@ public class DeadlineCommand extends Command {
     }
 
     /**
-     * Constructor for the Deadline class for adding deadline.
+     * Creates a new {@code DeadlineCommand} that will add a {@code Deadline}.
+     *
+     * @throws JohnDoeException If user input is not in the expected format.
      */
     public DeadlineCommand(String input) throws JohnDoeException {
         super(false);
@@ -67,7 +69,7 @@ public class DeadlineCommand extends Command {
     }
 
     /**
-     * Adds a Deadline object, or prints the help for the command.
+     * Adds a {@code Deadline}, or prints the help for the command.
      */
     public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {

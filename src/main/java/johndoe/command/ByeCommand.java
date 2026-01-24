@@ -4,18 +4,18 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * ByeCommand can execute the farewell message from Ui.
+ * Represents the {@code Command} to terminate the app.
  */
 public class ByeCommand extends Command {
     /**
-     * Constructor of the ByeCommand class.
+     * Creates a new {@code ByeCommand}.
      */
     public ByeCommand() {
         super(true);
     }
 
     /**
-     * Executes the farewell message from Ui.
+     * Executes the farewell message from {@code Ui}.
      */
     public void run(TaskList taskList, Ui ui) {
         ui.printFarewell();

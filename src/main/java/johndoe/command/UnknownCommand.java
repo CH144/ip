@@ -4,11 +4,11 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * UnknownCommand can print further help.
+ * Represents the {@code Command} to output more help.
  */
 public class UnknownCommand extends Command {
     /**
-     * Constructor of the UnknownCommand class.
+     * Creates a new {@code UnknownCommand}.
      */
     public UnknownCommand() {
         super(false);

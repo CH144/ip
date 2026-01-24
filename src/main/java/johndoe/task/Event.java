@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /**
- * Event is a task that has a start and end time.
+ * Represents a task with a name, completion status, start and end.
  */
 public class Event extends Task {
     private static final DateTimeFormatter FORMATTER = 
@@ -15,7 +15,9 @@ public class Event extends Task {
     private LocalDateTime end;
 
     /**
-     * Constructor of the Event class.
+     * Creates a new {@code Event} with the given name, start and end.
+     *
+     * @throws JohnDoeException If start is chronologically after end.
      */
     public Event(String taskName, LocalDateTime start, LocalDateTime end) throws JohnDoeException {
         super(taskName);

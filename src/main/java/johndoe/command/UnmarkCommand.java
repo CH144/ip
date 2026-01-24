@@ -7,13 +7,13 @@ import johndoe.ui.Ui;
 import java.util.OptionalInt;
 
 /**
- * UnmarkCommand can mark an exising task as not done.
+ * Represents the {@code Command} to mark an existing {@code Task} as not done.
  */
 public class UnmarkCommand extends Command {
     private OptionalInt opInt;
 
     /**
-     * Constructor for the UnmarkCommand class for printing help.
+     * Creates a new {@code UnmarkCommand} that will print help.
      */
     public UnmarkCommand() {
         super(false);
@@ -21,7 +21,9 @@ public class UnmarkCommand extends Command {
     }
 
     /**
-     * Constructor for the UnmarkCommand class for unmarking a task.
+     * Creates a new {@code UnmarkCommand} that will mark a {@code Task} as not done.
+     *
+     * @throws JohnDoeException If input is not a number.
      */
     public UnmarkCommand(String input) throws JohnDoeException {
         super(false);
@@ -34,7 +36,9 @@ public class UnmarkCommand extends Command {
     }
 
     /**
-     * Marks the task as not done, or prints the help.
+     * Marks the {@code Task} as not done using the index, or prints the help for the command.
+     *
+     * @throws JohnDoeException If the index is out of bounds.
      */
     public void run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {

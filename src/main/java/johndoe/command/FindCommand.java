@@ -6,13 +6,13 @@ import johndoe.ui.Ui;
 import java.util.Optional;
 
 /**
- * FindCommand can list all the recorded tasks that have the keywords.
+ * Represents the {@code Command} to output all {@code Task} containing keywords.
  */
 public class FindCommand extends Command {
     private Optional<String> opString;
 
     /**
-     * Constructor for the FindCommand class for print help.
+     * Creates a new {@code FindCommand} that will print help.
      */
     public FindCommand() {
         super(false);
@@ -20,7 +20,7 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Constructor for the FindCommand class for finding.
+     * Creates a new {@code FindCommand} that will look for relevant {@code Task}.
      */
     public FindCommand(String keyWords) {
         super(false);
@@ -28,7 +28,7 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Prints all the recorded tasks, or the help.
+     * Prints all {@code Task} that contain the keywords in the task name, or prints the help.
      */
     public void run(TaskList taskList, Ui ui) {
         if (opString.isPresent()) {

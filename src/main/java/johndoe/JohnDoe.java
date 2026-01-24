@@ -8,9 +8,10 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * JohnDoe is a task managing app.
- * It is able to add and delete various types of tasks,
- * as well as track task completion,
+ * Represents the main class for the {@code JohnDoe} task management app.
+ * The {@code JohnDoe} app is able to:
+ * add and delete various types of tasks,
+ * track task completion,
  * and store the tasklist to a file for future reference.
  */
 public class JohnDoe {
@@ -44,10 +45,9 @@ public class JohnDoe {
     }
 
     /**
-     * Entry point of the JohnDoe app.
-     * Creates a new JohnDoe object then begins taking user input.
+     * Creates a new {@code JohnDoe} then runs the app.
      *
-     * @param args Optional command line argument to specify the output file.
+     * @param args Optional command line argument to specify the output filename.
      */
     public static void main(String[] args) {
         if (args.length > 0) {

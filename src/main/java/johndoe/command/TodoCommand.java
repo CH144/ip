@@ -8,13 +8,13 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * TodoCommand can add a todo task to the records.
+ * Represents the {@code Command} to add a {@code Todo}.
  */
 public class TodoCommand extends Command {
     private Optional<Todo> opTask;
 
     /**
-     * Constructor for the Todo class for printing help.
+     * Creates a new {@code TodoCommand} that will print help.
      */
     public TodoCommand() {
         super(false);
@@ -22,7 +22,7 @@ public class TodoCommand extends Command {
     }
 
     /**
-     * Constructor for the Todo class for adding a todo.
+     * Creates a new {@code TodoCommand} that will add a {@code Todo}.
      */
     public TodoCommand(String input) {
         super(false);
@@ -32,7 +32,7 @@ public class TodoCommand extends Command {
     }
 
     /**
-     * Adds a todo, or prints the help.
+     * Adds a {@code Todo}, or prints the help for the command.
      */
     public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {

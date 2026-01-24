@@ -4,18 +4,18 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * ListCommand can list all the recorded tasks.
+ * Represents the {@code Command} to output all {@code Task}.
  */
 public class ListCommand extends Command {
     /**
-     * Constructor for the ListCommand class.
+     * Create a new {@code ListCommand}.
      */
     public ListCommand() {
         super(false);
     }
 
     /**
-     * Prints all the recorded tasks.
+     * Prints all {@code Task}.
      */
     public void run(TaskList taskList, Ui ui) {
         taskList.printTasks(ui);

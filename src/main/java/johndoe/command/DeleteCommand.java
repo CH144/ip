@@ -7,13 +7,13 @@ import johndoe.ui.Ui;
 import java.util.OptionalInt;
 
 /**
- * DeleteCommand can remove an existing task from the records.
+ * Represents the {@code Command} to remove an existing {@code Task}.
  */
 public class DeleteCommand extends Command {
     private OptionalInt opInt;
 
     /**
-     * Constructor for the DeleteCommand class for printing help.
+     * Creates a new {@code DeleteCommand} that will print help.
      */
     public DeleteCommand() {
         super(false);
@@ -21,7 +21,9 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Constructor for the DeleteCommand class for deleting a task.
+     * Creates a new {@code DeleteCommand} that will delete a {@code Task}.
+     *
+     * @throws JohnDoeException If input is not a number.
      */
     public DeleteCommand(String input) throws JohnDoeException {
         super(false);
@@ -34,7 +36,9 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Deletes the task, or prints the help for the command.
+     * Deletes the {@code Task} using the index, or prints the help for the command.
+     *
+     * @throws JohnDoeException If index is out of bounds.
      */
     public void run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {

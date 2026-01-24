@@ -3,14 +3,15 @@ package johndoe.ui;
 import java.util.Scanner;
 
 /**
- * Ui handles all of the input and output.
+ * Represents the user interface.
+ * Handles all input and output.
+ * Contains various help messages for the available commands.
  */
 public class Ui {
     private Scanner scanner;
 
     /**
-     * Constructor of the Ui class.
-     * Creates a new Scanner for reading user input.
+     * Creates a new {@code Ui} with a {@code Scanner} for reading user input.
      */
     public Ui() {
         scanner = new Scanner(System.in);
@@ -55,7 +56,7 @@ public class Ui {
     }
 
     /**
-     * Prints a help message for unknown commands.
+     * Prints help for unknown commands.
      */
     public void printUnknownCommandHelp() {
         System.out.printf("  Enter 'help' for a list of all available commands.\n\n> ");
@@ -80,7 +81,7 @@ public class Ui {
     }
 
     /**
-     * Prints the help for the 'find' command.
+     * Prints help for the 'find' command.
      */
     public void printFindHelp() {
         System.out.printf("  info    : lists tasks that contain keywords.\n"

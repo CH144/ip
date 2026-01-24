@@ -23,7 +23,9 @@ import java.time.format.DateTimeParseException;
 import java.time.LocalDateTime;
 
 /**
- * Parser interprets a given input into the required object.
+ * Interprets an input into the required object.
+ * Currently supports {@code String} to {@code Command} for user input,
+ * and {@code String} to {@code Task} for file entries.
  */
 public class Parser {
     private static final DateTimeFormatter FORMATTER =
@@ -34,7 +36,9 @@ public class Parser {
     }
 
     /**
-     * Parses a user input into a command object.
+     * Parses a user input {@code String} into a {@code Command} object.
+     *
+     * @throws JohnDoeException If {@code Command} instantiation has an error.
      */
     public static Command inputToCommand(String userInput) throws JohnDoeException {
         String[] tokens = userInput.split("\\s+", 2);
@@ -88,7 +92,9 @@ public class Parser {
     }
 
     /**
-     * Parses a file entry to a task object.
+     * Parses a file entry {@code String} to a {@code Task} object.
+     *
+     * @throws JohnDoeException If the file entry format is incorrect.
      */
     public static Task entryToTask(String entry) throws JohnDoeException {
         String errorMessage = "  Invalid entry: " + entry + "\n";

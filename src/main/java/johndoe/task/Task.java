@@ -1,7 +1,7 @@
 package johndoe.task;
 
 /**
- * Task records the task name and task completion.
+ * Represents a task with a name and completion status.
  */
 public class Task {
     private String taskName;

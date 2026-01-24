@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TaskList manages operations to the recorded tasks.
+ * Manages created {@code Task} objects.
+ * Has add, delete, list, find, mark as done, mark as not done methods.
  */
 public class TaskList {
     private static final String OOB_ERROR = "  Task number does not exist.\n"
@@ -16,8 +17,8 @@ public class TaskList {
     private ArrayList<Task> taskList;
 
     /**
-     * Constructor of the TaskList class.
-     * Creates a new ArrayList of Task to be updated.
+     * Creates an empty {@code ArrayList} of {@code Task}.
+     * Every new run of {@code JohnDoe} starts with a fresh {@code TaskList}.
      */
     public TaskList() {
         taskList = new ArrayList<Task>();
@@ -25,7 +26,7 @@ public class TaskList {
 
     /**
      * Adds a task.
-     * Used when reading data from a file.
+     * Used when reading task entries from a file.
      * Has no output.
      */
     public void addTask(Task task) {
@@ -47,9 +48,10 @@ public class TaskList {
     }
 
     /**
-     * Deletes a task.
+     * Deletes the task specified by the index.
      * Has output on success.
-     * Throws JohnDoeException if the index is out of bounds.
+     *
+     * @throws JohnDoeException If the index is out of bounds.
      */
     public void deleteTask(int index, Ui ui) throws JohnDoeException {
         try {
@@ -66,9 +68,10 @@ public class TaskList {
     }
 
     /**
-     * Marks a task as done.
+     * Marks the task specified by the index as done.
      * Has output on success.
-     * Throws JohnDoeException if the index is out of bounds.
+     *
+     * @throws JohnDoeException If the index is out of bounds.
      */
     public void markTask(int index, Ui ui) throws JohnDoeException {
         try {
@@ -82,9 +85,10 @@ public class TaskList {
     }
 
     /**
-     * Marks a task as not done.
+     * Marks the task specified by the index as not done.
      * Has output on success.
-     * Throws JohnDoeException if the index is out of bounds.
+     *
+     * @throws JohnDoeException If the index is out of bounds.
      */
     public void unmarkTask(int index, Ui ui) throws JohnDoeException {
         try {
@@ -98,7 +102,7 @@ public class TaskList {
     }
 
     /**
-     * Prints all recorded tasks in the order of record.
+     * Prints all recorded tasks in the order they were added.
      */
     public void printTasks(Ui ui) {
         String output = "  Here are the tasks in your list:\n";
@@ -112,7 +116,7 @@ public class TaskList {
     }
 
     /**
-     * Prints all recorded tasks that contain the keywords.
+     * Prints all recorded tasks with task name that contains the keywords as substring.
      */
     public void findTasks(String keyWords, Ui ui) {
         String output = String.format("  Here are the tasks that contain '%s':\n", keyWords);

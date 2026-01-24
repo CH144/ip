@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 /**
- * Storage handles the loading and saving of recorded tasks.
+ * Handles the loading and saving of recorded {@code Task} objects.
  */
 public class Storage {
     private static final String LOAD_ERROR =
@@ -24,18 +24,19 @@ public class Storage {
     private Path filePath;
 
     /**
-     * Constructor of the Storage class.
-     * Sets the Path attribute for future use.
+     * Creates a new {@code Storage} with the filepath for loading and saving.
      */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
     /**
-     * Reads the tasks stored from a file.
+     * Reads the stored task entries from a file.
+     * Does nothing if file does not exist.
+     * Kills the app if the file exists but unable to read correctly.
      */
     public void read(TaskList taskList, Ui ui) {
-        // by ChatGPT
+        // Code written with help from ChatGPT.
         try {
             if (Files.exists(filePath)) {
                 try (BufferedReader reader = Files.newBufferedReader(filePath)) {
@@ -56,10 +57,12 @@ public class Storage {
     }
 
     /**
-     * Writes the recorded tasks to a file.
+     * Writes the recorded tasks to a file in the file entry representation.
+     * Tries to create the file if it does not exist.
+     * Prints the tasks for manual copying if file write fails.
      */
     public void write(TaskList taskList, Ui ui) {
-        // by ChatGPT
+        // Code written with help from ChatGPT.
         try {
             Files.createDirectories(filePath.getParent());
             Files.write(

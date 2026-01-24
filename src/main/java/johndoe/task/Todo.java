@@ -1,11 +1,11 @@
 package johndoe.task;
 
 /**
- * Todo is a basic task with no timings associated.
+ * Represents a task with a name and completion status.
  */
 public class Todo extends Task {
     /**
-     * Constructor of the Todo class.
+     * Creates a new {@code Todo} with the given name.
      */
     public Todo(String taskName) {
         super(taskName);

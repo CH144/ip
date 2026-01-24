@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /**
- * Deadline is a task with a deadline.
+ * Represents a task with a name, completion status and deadline.
  */
 public class Deadline extends Task {
     private static final DateTimeFormatter FORMATTER=
@@ -12,7 +12,7 @@ public class Deadline extends Task {
     private LocalDateTime deadline;
 
     /**
-     * Constructor of the Deadline class.
+     * Creates a new {@code Deadline} with the given name and deadline.
      */
     public Deadline(String taskName, LocalDateTime deadline) {
         super(taskName);

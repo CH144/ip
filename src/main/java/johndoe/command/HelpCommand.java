@@ -4,18 +4,18 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * HelpCommand can print all the available commands.
+ * Represents the {@code Command} to output command options.
  */
 public class HelpCommand extends Command {
     /**
-     * Constructor for the HelpCommand class.
+     * Creates a new {@code HelpCommand}.
      */
     public HelpCommand() {
         super(false);
     }
 
     /**
-     * Prints all the available commands.
+     * Prints all the available command options.
      */
     public void run(TaskList taskList, Ui ui) {
         ui.printHelp();

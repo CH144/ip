@@ -5,7 +5,7 @@ import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
 /**
- * Command child classes handle the required calls to TaskList and Ui objects.
+ * Handles method calls to {@code TaskList} and {@code Ui} according to child type.
  */
 public abstract class Command {
     private boolean isBye;
@@ -14,12 +14,15 @@ public abstract class Command {
         this.isBye = isBye;
     }
 
+    /**
+     * Returns if user requested to terminate the app.
+     */
     public boolean isBye() {
         return isBye;
     }
 
     /**
-     * Runs methods from TaskList or Ui or both according to the command.
+     * Runs methods from {@code TaskList} or {@code Ui} or both according to the child type.
      */
     public abstract void run(TaskList taskList, Ui ui) throws JohnDoeException;
 }

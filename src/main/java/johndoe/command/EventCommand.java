@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
- * EventCommand can add an Event object to the records.
+ * Represents the {@code Command} to add an {@code Event}.
  */
 public class EventCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'event' for more help.\n\n> ";
     private Optional<Event> opTask;
 
     /**
-     * Constructor for the EventCommand class for printing help.
+     * Creates a new {@code EventCommand} that will print help.
      */
     public EventCommand() {
         super(false);
@@ -28,7 +28,9 @@ public class EventCommand extends Command {
     }
 
     /**
-     * Constructor for the EventCommand class for adding an event.
+     * Creates a new {@code EventCommand} that will add a {@code Event}.
+     *
+     * @throws JohnDoeException If user input is not in the expected format.
      */
     public EventCommand(String input) throws JohnDoeException {
         super(false);
@@ -82,7 +84,7 @@ public class EventCommand extends Command {
     }
 
     /**
-     * Adds an event, or prints the help for the command.
+     * Adds an {@code event}, or prints the help for the command.
      */
     public void run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {

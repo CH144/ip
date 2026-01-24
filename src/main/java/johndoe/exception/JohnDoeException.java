@@ -1,10 +1,13 @@
 package johndoe.exception;
 
 /**
- * JohnDoeException is a custom exception for the JohnDoe app.
+ * Represents exceptions of the {@code JohnDoe} app.
  */
 public class JohnDoeException extends Exception {
-    public JohnDoeException(String m) {
-        super(m);
+    /**
+     * Creates a new {@code JohnDoeException} with the error message to be displayed.
+     */
+    public JohnDoeException(String errorMessage) {
+        super(errorMessage);
     }
 }
