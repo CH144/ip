@@ -1,5 +1,9 @@
 package johndoe.parser;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import johndoe.command.ByeCommand;
 import johndoe.command.Command;
 import johndoe.command.DeadlineCommand;
@@ -17,10 +21,6 @@ import johndoe.task.Deadline;
 import johndoe.task.Event;
 import johndoe.task.Task;
 import johndoe.task.Todo;
-
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.LocalDateTime;
 
 /**
  * Interprets an input into the required object.
@@ -101,7 +101,7 @@ public class Parser {
 
         String[] tokens = entry.split("\\|");
 
-        if (tokens.length < 3){
+        if (tokens.length < 3) {
             throw new JohnDoeException(errorMessage);
         }
 
@@ -122,7 +122,7 @@ public class Parser {
                 + entry
                 + "\n  Todo should be of the format: 'T | IS_TASK_DONE | TASK_NAME'\n"
                 + "  Where IS_TASK_DONE may be 1 for done or 0 for not done.\n";
-                
+
         if (tokens.length != 3) {
             throw new JohnDoeException(errorMessage);
         }

@@ -22,7 +22,7 @@ public class JohnDoe {
     private JohnDoe(String s) {
         taskList = new TaskList();
         ui = new Ui();
-        storage =  new Storage(s);
+        storage = new Storage(s);
     }
 
     private void run() {

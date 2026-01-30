@@ -1,11 +1,11 @@
 package johndoe.tasklist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import johndoe.exception.JohnDoeException;
 import johndoe.task.Task;
 import johndoe.ui.Ui;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Manages created {@code Task} objects.
@@ -133,7 +133,7 @@ public class TaskList {
 
     /**
      * Returns the tasks in the format for saving to a file.
-     */ 
+     */
     public List<String> toFileEntries() {
         return taskList.stream().map(t -> t.toFileEntry()).toList();
     }

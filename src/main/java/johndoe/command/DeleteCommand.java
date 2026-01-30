@@ -1,10 +1,10 @@
 package johndoe.command;
 
+import java.util.OptionalInt;
+
 import johndoe.exception.JohnDoeException;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
-
-import java.util.OptionalInt;
 
 /**
  * Represents the {@code Command} to remove an existing {@code Task}.
