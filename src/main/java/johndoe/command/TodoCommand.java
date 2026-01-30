@@ -1,11 +1,11 @@
 package johndoe.command;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 import johndoe.task.Todo;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
-
-import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * Represents the {@code Command} to add a {@code Todo}.

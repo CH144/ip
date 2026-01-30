@@ -1,16 +1,16 @@
 package johndoe.command;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Optional;
+
 import johndoe.exception.JohnDoeException;
 import johndoe.task.Deadline;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * Represents the {@code Command} to add a {@code Deadline}.

@@ -1,10 +1,10 @@
 package johndoe.command;
 
-import johndoe.command.DeadlineCommand;
-import johndoe.exception.JohnDoeException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import johndoe.exception.JohnDoeException;
 
 public class DeadlineCommandTest {
     @Test

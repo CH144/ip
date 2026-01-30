@@ -1,13 +1,13 @@
 package johndoe.task;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a task with a name, completion status and deadline.
  */
 public class Deadline extends Task {
-    private static final DateTimeFormatter FORMATTER=
+    private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime deadline;
 

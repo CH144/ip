@@ -16,7 +16,7 @@ public class Task {
      * Marks the task as done.
      */
     public void markAsDone() {
-        isDone = true;    
+        isDone = true;
     }
 
     /**

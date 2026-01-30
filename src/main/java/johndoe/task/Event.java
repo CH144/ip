@@ -1,15 +1,14 @@
 package johndoe.task;
 
-import johndoe.exception.JohnDoeException;
-
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import johndoe.exception.JohnDoeException;
 /**
  * Represents a task with a name, completion status, start and end.
  */
 public class Event extends Task {
-    private static final DateTimeFormatter FORMATTER = 
+    private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private LocalDateTime start;
     private LocalDateTime end;
