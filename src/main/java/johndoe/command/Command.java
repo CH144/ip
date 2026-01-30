@@ -23,6 +23,9 @@ public abstract class Command {
 
     /**
      * Runs methods from {@code TaskList} or {@code Ui} or both according to the child type.
+     *
+     * @return Corresponding message after running the methods.
+     * @throws JohnDoeException If user input format was invalid.
      */
-    public abstract void run(TaskList taskList, Ui ui) throws JohnDoeException;
+    public abstract String run(TaskList taskList, Ui ui) throws JohnDoeException;
 }

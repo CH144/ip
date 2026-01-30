@@ -31,20 +31,21 @@ public class UnmarkCommand extends Command {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {
             throw new JohnDoeException("  Task number does not exist.\n"
-                    + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ");
+                    + "  Enter 'list' to view all tasks and their corresponding number.\n\n");
         }
     }
 
     /**
      * Marks the {@code Task} as not done using the index, or prints the help for the command.
      *
+     * @return Successful unmark or help message.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public void run(TaskList taskList, Ui ui) throws JohnDoeException {
+    public String run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {
-            taskList.unmarkTask(opInt.getAsInt(), ui);
+            return taskList.unmarkTask(opInt.getAsInt(), ui);
         } else {
-            ui.printUnmarkHelp();
+            return ui.getUnmarkHelp();
         }
     }
 }

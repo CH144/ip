@@ -16,7 +16,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to add a {@code Deadline}.
  */
 public class DeadlineCommand extends Command {
-    private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n> ";
+    private static final String HELP_SUFFIX = "  Enter 'deadline' for more help.\n\n";
     private Optional<Deadline> opTask;
 
     /**
@@ -70,12 +70,14 @@ public class DeadlineCommand extends Command {
 
     /**
      * Adds a {@code Deadline}, or prints the help for the command.
+     *
+     * @return Successful add or help message.
      */
-    public void run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {
-            taskList.addTask(opTask.get(), ui);
+            return taskList.addTask(opTask.get(), ui);
         } else {
-            ui.printDeadlineHelp();
+            return ui.getDeadlineHelp();
         }
     }
 }

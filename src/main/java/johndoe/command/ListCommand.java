@@ -15,9 +15,9 @@ public class ListCommand extends Command {
     }
 
     /**
-     * Prints all {@code Task}.
+     * Returns all {@code Task}.
      */
-    public void run(TaskList taskList, Ui ui) {
-        taskList.printTasks(ui);
+    public String run(TaskList taskList, Ui ui) {
+        return taskList.getTasks(ui);
     }
 }

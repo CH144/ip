@@ -31,20 +31,21 @@ public class DeleteCommand extends Command {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {
             throw new JohnDoeException("  Task number does not exist.\n"
-                    + "  Enter 'list' to view all tasks and their corresponding number.\n\n> ");
+                    + "  Enter 'list' to view all tasks and their corresponding number.\n\n");
         }
     }
 
     /**
      * Deletes the {@code Task} using the index, or prints the help for the command.
      *
+     * @return Successful delete or help message.
      * @throws JohnDoeException If index is out of bounds.
      */
-    public void run(TaskList taskList, Ui ui) throws JohnDoeException {
+    public String run(TaskList taskList, Ui ui) throws JohnDoeException {
         if (opInt.isPresent()) {
-            taskList.deleteTask(opInt.getAsInt(), ui);
+            return taskList.deleteTask(opInt.getAsInt(), ui);
         } else {
-            ui.printDeleteHelp();
+            return ui.getDeleteHelp();
         }
     }
 }

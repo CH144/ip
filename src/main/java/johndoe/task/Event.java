@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import johndoe.exception.JohnDoeException;
+
 /**
  * Represents a task with a name, completion status, start and end.
  */
@@ -22,7 +23,7 @@ public class Event extends Task {
         super(taskName);
         if (start.isAfter(end)) {
             throw new JohnDoeException("  Start cannot be after end.\n"
-                + "Enter 'event' for more help.\n\n> ");
+                + "Enter 'event' for more help.\n\n");
         }
         this.start = start;
         this.end = end;

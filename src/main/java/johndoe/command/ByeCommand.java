@@ -15,9 +15,9 @@ public class ByeCommand extends Command {
     }
 
     /**
-     * Executes the farewell message from {@code Ui}.
+     * Returns 'bye' to close the application.
      */
-    public void run(TaskList taskList, Ui ui) {
-        ui.printFarewell();
+    public String run(TaskList taskList, Ui ui) {
+        return "bye";
     }
 }
