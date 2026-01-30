@@ -17,10 +17,12 @@ import johndoe.ui.Ui;
  * Handles the loading and saving of recorded {@code Task} objects.
  */
 public class Storage {
+    private static final String LOAD_SUCCESS =
+            "  Successfully loaded existing tasks.\n\n";
     private static final String LOAD_ERROR =
-            "  Failed to load tasks. Please try again.\n";
+            "  Failed to load tasks. Please close and relaunch the app.\n\n";
     private static final String SAVE_ERROR =
-            "  Failed to save tasks. Please copy the tasklist manually.\n";
+            "  Failed to save tasks. Please copy the tasklist manually.\n\n";
     private Path filePath;
 
     /**
@@ -33,9 +35,10 @@ public class Storage {
     /**
      * Reads the stored task entries from a file.
      * Does nothing if file does not exist.
-     * Kills the app if the file exists but unable to read correctly.
+     *
+     * @return Success or error message with help message.
      */
-    public void read(TaskList taskList, Ui ui) {
+    public String read(TaskList taskList, Ui ui) {
         // Code written with help from ChatGPT.
         try {
             if (Files.exists(filePath)) {
@@ -46,22 +49,24 @@ public class Storage {
                         taskList.addTask(t);
                     }
                 }
+                return LOAD_SUCCESS + ui.getUnknownCommandHelp();
             }
         } catch (IOException e) {
-            ui.printError(LOAD_ERROR);
-            System.exit(1);
+            return LOAD_ERROR;
         } catch (JohnDoeException e) {
-            ui.printError(LOAD_ERROR + e.getMessage());
-            System.exit(1);
+            return LOAD_ERROR + e.getMessage();
         }
+        return ui.getUnknownCommandHelp();
     }
 
     /**
      * Writes the recorded tasks to a file in the file entry representation.
      * Tries to create the file if it does not exist.
-     * Prints the tasks for manual copying if file write fails.
+     * Returns the tasks for manual copying if file write fails.
+     *
+     * @return Error message if applicable.
      */
-    public void write(TaskList taskList, Ui ui) {
+    public String write(TaskList taskList, Ui ui) {
         // Code written with help from ChatGPT.
         try {
             Files.createDirectories(filePath.getParent());
@@ -71,10 +76,13 @@ public class Storage {
                     StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
-            ui.printError(SAVE_ERROR);
+            String errorMessage = SAVE_ERROR;
             for (String entry : taskList.toFileEntries()) {
-                ui.printSuccess(entry + "\n");
+                errorMessage += entry;
+                errorMessage += "\n";
             }
+            return errorMessage;
         }
+        return "";
     }
 }

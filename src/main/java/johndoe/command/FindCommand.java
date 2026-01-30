@@ -28,13 +28,13 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Prints all {@code Task} that contain the keywords in the task name, or prints the help.
+     * Returns all {@code Task} that contain the keywords in the task name, or the help message.
      */
-    public void run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui) {
         if (opString.isPresent()) {
-            taskList.findTasks(opString.get(), ui);
+            return taskList.findTasks(opString.get(), ui);
         } else {
-            ui.printFindHelp();
+            return ui.getFindHelp();
         }
     }
 }

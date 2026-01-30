@@ -15,9 +15,9 @@ public class HelpCommand extends Command {
     }
 
     /**
-     * Prints all the available command options.
+     * Returns all the available command options.
      */
-    public void run(TaskList taskList, Ui ui) {
-        ui.printHelp();
+    public String run(TaskList taskList, Ui ui) {
+        return ui.getHelp();
     }
 }

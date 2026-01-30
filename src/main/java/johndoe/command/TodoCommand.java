@@ -33,12 +33,14 @@ public class TodoCommand extends Command {
 
     /**
      * Adds a {@code Todo}, or prints the help for the command.
+     *
+     * @return Successful add or help message.
      */
-    public void run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui) {
         if (opTask.isPresent()) {
-            taskList.addTask(opTask.get(), ui);
+            return taskList.addTask(opTask.get(), ui);
         } else {
-            ui.printTodoHelp();
+            return ui.getTodoHelp();
         }
     }
 }

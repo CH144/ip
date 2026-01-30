@@ -15,9 +15,9 @@ public class UnknownCommand extends Command {
     }
 
     /**
-     * Prints more help.
+     * Returns more help.
      */
-    public void run(TaskList taskList, Ui ui) {
-        ui.printUnknownCommandHelp();
+    public String run(TaskList taskList, Ui ui) {
+        return ui.getUnknownCommandHelp();
     }
 }
