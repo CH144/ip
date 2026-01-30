@@ -1,4 +1,4 @@
-package johndoe;
+package johndoe.app;
 
 import johndoe.command.Command;
 import johndoe.exception.JohnDoeException;
