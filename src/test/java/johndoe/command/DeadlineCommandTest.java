@@ -8,7 +8,7 @@ import johndoe.exception.JohnDoeException;
 
 public class DeadlineCommandTest {
     @Test
-    public void testNoTaskName() {
+    public void constructDeadline_noName_exceptionThrown() {
         try {
             new DeadlineCommand("/by 1pm");
         } catch (JohnDoeException e) {

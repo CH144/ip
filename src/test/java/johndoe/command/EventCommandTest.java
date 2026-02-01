@@ -8,7 +8,7 @@ import johndoe.exception.JohnDoeException;
 
 public class EventCommandTest {
     @Test
-    public void testSwapFromToParameters() {
+    public void constructEvent_swapFromTo_exceptionThrown() {
         try {
             new EventCommand("lecture /to 1pm /from 2pm");
         } catch (JohnDoeException e) {
