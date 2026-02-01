@@ -9,13 +9,6 @@ import johndoe.ui.Ui;
  */
 public class HelpCommand extends Command {
     /**
-     * Creates a new {@code HelpCommand}.
-     */
-    public HelpCommand() {
-        super(false);
-    }
-
-    /**
      * Returns all the available command options.
      */
     public String run(TaskList taskList, Storage storage) {

@@ -24,7 +24,6 @@ public class DeadlineCommand extends Command {
      * Creates a new {@code DeadlineCommand} that will print help.
      */
     public DeadlineCommand() {
-        super(false);
         opTask = Optional.empty();
     }
 
@@ -34,8 +33,6 @@ public class DeadlineCommand extends Command {
      * @throws JohnDoeException If user input is not in the expected format.
      */
     public DeadlineCommand(String input) throws JohnDoeException {
-        super(false);
-
         try {
             String[] tokens = input.split("\\s+");
 

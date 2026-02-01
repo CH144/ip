@@ -17,7 +17,6 @@ public class DeleteCommand extends Command {
      * Creates a new {@code DeleteCommand} that will print help.
      */
     public DeleteCommand() {
-        super(false);
         opInt = OptionalInt.empty();
     }
 
@@ -27,7 +26,6 @@ public class DeleteCommand extends Command {
      * @throws JohnDoeException If input is not a number.
      */
     public DeleteCommand(String input) throws JohnDoeException {
-        super(false);
         try {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {

@@ -8,13 +8,6 @@ import johndoe.tasklist.TaskList;
  */
 public class ByeCommand extends Command {
     /**
-     * Creates a new {@code ByeCommand}.
-     */
-    public ByeCommand() {
-        super(true);
-    }
-
-    /**
      * Returns 'bye' to close the application.
      */
     public String run(TaskList taskList, Storage storage) {

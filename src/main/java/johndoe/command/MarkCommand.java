@@ -17,7 +17,6 @@ public class MarkCommand extends Command {
      * Creates a new {@code MarkCommand} that will print help.
      */
     public MarkCommand() {
-        super(false);
         opInt = OptionalInt.empty();
     }
 
@@ -27,7 +26,6 @@ public class MarkCommand extends Command {
      * @throws JohnDoeException If input is not a number.
      */
     public MarkCommand(String input) throws JohnDoeException {
-        super(false);
         try {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {

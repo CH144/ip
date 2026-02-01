@@ -24,7 +24,6 @@ public class EventCommand extends Command {
      * Creates a new {@code EventCommand} that will print help.
      */
     public EventCommand() {
-        super(false);
         opTask = Optional.empty();
     }
 
@@ -34,8 +33,6 @@ public class EventCommand extends Command {
      * @throws JohnDoeException If user input is not in the expected format.
      */
     public EventCommand(String input) throws JohnDoeException {
-        super(false);
-
         try {
             String[] tokens = input.split("\\s+");
 

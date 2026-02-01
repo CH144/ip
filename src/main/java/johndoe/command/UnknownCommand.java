@@ -9,13 +9,6 @@ import johndoe.ui.Ui;
  */
 public class UnknownCommand extends Command {
     /**
-     * Creates a new {@code UnknownCommand}.
-     */
-    public UnknownCommand() {
-        super(false);
-    }
-
-    /**
      * Returns more help.
      */
     public String run(TaskList taskList, Storage storage) {

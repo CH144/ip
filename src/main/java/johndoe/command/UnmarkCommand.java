@@ -17,7 +17,6 @@ public class UnmarkCommand extends Command {
      * Creates a new {@code UnmarkCommand} that will print help.
      */
     public UnmarkCommand() {
-        super(false);
         opInt = OptionalInt.empty();
     }
 
@@ -27,7 +26,6 @@ public class UnmarkCommand extends Command {
      * @throws JohnDoeException If input is not a number.
      */
     public UnmarkCommand(String input) throws JohnDoeException {
-        super(false);
         try {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {

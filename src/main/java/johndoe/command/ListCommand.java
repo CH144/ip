@@ -8,13 +8,6 @@ import johndoe.tasklist.TaskList;
  */
 public class ListCommand extends Command {
     /**
-     * Create a new {@code ListCommand}.
-     */
-    public ListCommand() {
-        super(false);
-    }
-
-    /**
      * Returns all {@code Task}.
      */
     public String run(TaskList taskList, Storage storage) {

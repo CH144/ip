@@ -18,7 +18,6 @@ public class TodoCommand extends Command {
      * Creates a new {@code TodoCommand} that will print help.
      */
     public TodoCommand() {
-        super(false);
         opTask = Optional.empty();
     }
 
@@ -26,7 +25,6 @@ public class TodoCommand extends Command {
      * Creates a new {@code TodoCommand} that will add a {@code Todo}.
      */
     public TodoCommand(String input) {
-        super(false);
         String[] tokens = input.split("\\s+");
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, tokens.length));
         opTask = Optional.of(new Todo(taskName));

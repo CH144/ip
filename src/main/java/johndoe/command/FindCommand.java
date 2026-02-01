@@ -16,7 +16,6 @@ public class FindCommand extends Command {
      * Creates a new {@code FindCommand} that will print help.
      */
     public FindCommand() {
-        super(false);
         opString = Optional.empty();
     }
 
@@ -24,7 +23,6 @@ public class FindCommand extends Command {
      * Creates a new {@code FindCommand} that will look for relevant {@code Task}.
      */
     public FindCommand(String keyWords) {
-        super(false);
         opString = Optional.of(keyWords);
     }
 
