@@ -31,11 +31,11 @@ public class FindCommand extends Command {
     /**
      * Returns all {@code Task} that contain the keywords in the task name, or the help message.
      */
-    public String run(TaskList taskList, Ui ui, Storage storage) {
+    public String run(TaskList taskList, Storage storage) {
         if (opString.isPresent()) {
-            return taskList.findTasks(opString.get(), ui);
+            return taskList.findTasks(opString.get());
         } else {
-            return ui.getFindHelp();
+            return Ui.getFindHelp();
         }
     }
 }

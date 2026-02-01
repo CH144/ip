@@ -40,7 +40,7 @@ public class Storage {
      *
      * @return Success or error message with help message.
      */
-    public String read(TaskList taskList, Ui ui) {
+    public String read(TaskList taskList) {
         // Code written with help from ChatGPT.
         try {
             if (Files.exists(filePath)) {
@@ -48,12 +48,12 @@ public class Storage {
                     String entry;
                     while ((entry = reader.readLine()) != null) {
                         Task t = Parser.entryToTask(entry);
-                        taskList.addTask(t);
+                        taskList.addTaskSilently(t);
                     }
                 }
-                return LOAD_SUCCESS + ui.getUnknownCommandHelp();
+                return LOAD_SUCCESS + Ui.getUnknownCommandHelp();
             }
-            return ui.getUnknownCommandHelp();
+            return Ui.getUnknownCommandHelp();
         } catch (IOException e) {
             return LOAD_ERROR;
         } catch (JohnDoeException e) {
@@ -66,9 +66,9 @@ public class Storage {
      * Tries to create the file if it does not exist.
      * Returns the tasks for manual copying if file write fails.
      *
-     * @return Error message if applicable.
+     * @return Success or error message.
      */
-    public String write(TaskList taskList, Ui ui) {
+    public String write(TaskList taskList) {
         // Code written with help from ChatGPT.
         try {
             Files.createDirectories(filePath.getParent());

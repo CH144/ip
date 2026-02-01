@@ -5,7 +5,6 @@ import java.util.List;
 
 import johndoe.exception.JohnDoeException;
 import johndoe.task.Task;
-import johndoe.ui.Ui;
 
 /**
  * Manages created {@code Task} objects.
@@ -29,7 +28,7 @@ public class TaskList {
      * Used when reading task entries from a file.
      * Has no output.
      */
-    public void addTask(Task task) {
+    public void addTaskSilently(Task task) {
         taskList.add(task);
     }
 
@@ -39,7 +38,7 @@ public class TaskList {
      *
      * @return Output on success.
      */
-    public String addTask(Task task, Ui ui) {
+    public String addTask(Task task) {
         taskList.add(task);
         return String.format("  Got it. I've added this task:\n"
                 + "    %s\n"
@@ -54,7 +53,7 @@ public class TaskList {
      * @return Output on success.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public String deleteTask(int index, Ui ui) throws JohnDoeException {
+    public String deleteTask(int index) throws JohnDoeException {
         try {
             Task task = taskList.get(index);
             taskList.remove(index);
@@ -74,7 +73,7 @@ public class TaskList {
      * @return Output on success.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public String markTask(int index, Ui ui) throws JohnDoeException {
+    public String markTask(int index) throws JohnDoeException {
         try {
             taskList.get(index).markAsDone();
             return String.format("  Nice! I've marked this task as done:\n"
@@ -91,7 +90,7 @@ public class TaskList {
      * @return Output on success.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public String unmarkTask(int index, Ui ui) throws JohnDoeException {
+    public String unmarkTask(int index) throws JohnDoeException {
         try {
             taskList.get(index).markAsNotDone();
             return String.format("  OK, I've marked this task as not done yet:\n"
@@ -105,7 +104,7 @@ public class TaskList {
     /**
      * Returns all recorded tasks in the order they were added.
      */
-    public String getTasks(Ui ui) {
+    public String getTasks() {
         String output = "  Here are the tasks in your list:\n";
         for (int i = 0; i < taskList.size(); i++) {
             output += String.format("    %d. %s\n",
@@ -119,7 +118,7 @@ public class TaskList {
     /**
      * Returns all recorded tasks with task name that contains the keywords as substring.
      */
-    public String findTasks(String keyWords, Ui ui) {
+    public String findTasks(String keyWords) {
         String output = String.format("  Here are the tasks that contain '%s':\n", keyWords);
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).taskNameContains(keyWords)) {

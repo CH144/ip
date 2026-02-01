@@ -42,12 +42,12 @@ public class UnmarkCommand extends Command {
      * @return Successful unmark or help message.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
+    public String run(TaskList taskList, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
-            return taskList.unmarkTask(opInt.getAsInt(), ui)
-                    + storage.write(taskList, ui);
+            return taskList.unmarkTask(opInt.getAsInt())
+                    + storage.write(taskList);
         } else {
-            return ui.getUnmarkHelp();
+            return Ui.getUnmarkHelp();
         }
     }
 }

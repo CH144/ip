@@ -2,7 +2,6 @@ package johndoe.command;
 
 import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 
 /**
  * Represents the {@code Command} to terminate the app.
@@ -18,7 +17,7 @@ public class ByeCommand extends Command {
     /**
      * Returns 'bye' to close the application.
      */
-    public String run(TaskList taskList, Ui ui, Storage storage) {
+    public String run(TaskList taskList, Storage storage) {
         return "bye";
     }
 }

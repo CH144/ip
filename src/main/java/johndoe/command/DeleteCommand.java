@@ -42,12 +42,12 @@ public class DeleteCommand extends Command {
      * @return Successful delete or help message.
      * @throws JohnDoeException If index is out of bounds.
      */
-    public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
+    public String run(TaskList taskList, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
-            return taskList.deleteTask(opInt.getAsInt(), ui)
-                    + storage.write(taskList, ui);
+            return taskList.deleteTask(opInt.getAsInt())
+                    + storage.write(taskList);
         } else {
-            return ui.getDeleteHelp();
+            return Ui.getDeleteHelp();
         }
     }
 }

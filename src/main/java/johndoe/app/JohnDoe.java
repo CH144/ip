@@ -5,7 +5,6 @@ import johndoe.exception.JohnDoeException;
 import johndoe.parser.Parser;
 import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 
 /**
  * Represents the class handling the logic for the {@code JohnDoe} task management app.
@@ -16,7 +15,6 @@ import johndoe.ui.Ui;
  */
 public class JohnDoe {
     private TaskList taskList;
-    private Ui ui;
     private Storage storage;
 
     /**
@@ -24,7 +22,6 @@ public class JohnDoe {
      */
     public JohnDoe(String s) {
         taskList = new TaskList();
-        ui = new Ui();
         storage = new Storage(s);
     }
 
@@ -34,7 +31,7 @@ public class JohnDoe {
      * @return Success or failure message.
      */
     public String loadTasks() {
-        return storage.read(taskList, ui);
+        return storage.read(taskList);
     }
 
     /**
@@ -45,7 +42,7 @@ public class JohnDoe {
     public String processUserInput(String userInput) {
         try {
             Command command = Parser.inputToCommand(userInput);
-            return command.run(taskList, ui, storage);
+            return command.run(taskList, storage);
         } catch (JohnDoeException e) {
             return e.getMessage();
         }

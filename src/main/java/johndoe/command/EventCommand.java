@@ -89,12 +89,12 @@ public class EventCommand extends Command {
      *
      * @return Successful add or help message.
      */
-    public String run(TaskList taskList, Ui ui, Storage storage) {
+    public String run(TaskList taskList, Storage storage) {
         if (opTask.isPresent()) {
-            return taskList.addTask(opTask.get(), ui)
-                    + storage.write(taskList, ui);
+            return taskList.addTask(opTask.get())
+                    + storage.write(taskList);
         } else {
-            return ui.getEventHelp();
+            return Ui.getEventHelp();
         }
     }
 }

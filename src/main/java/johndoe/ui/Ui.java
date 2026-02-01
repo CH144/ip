@@ -4,24 +4,21 @@ package johndoe.ui;
  * Contains various help messages for the available commands.
  */
 public class Ui {
-    /**
-     * Creates a new {@code Ui}.
-     */
-    public Ui() {
+    private Ui() {
         // intentionally blank
     }
 
     /**
      * Returns help for unknown commands.
      */
-    public String getUnknownCommandHelp() {
+    public static String getUnknownCommandHelp() {
         return "  Enter 'help' for a list of all available commands.\n\n";
     }
 
     /**
      * Returns all available commands.
      */
-    public String getHelp() {
+    public static String getHelp() {
         return "  Available commands:\n"
                 + "    list\n"
                 + "    find\n"
@@ -39,7 +36,7 @@ public class Ui {
     /**
      * Returns help for the 'find' command.
      */
-    public String getFindHelp() {
+    public static String getFindHelp() {
         return "  info: lists tasks that contain keywords.\n"
                 + "  usage: find KEY_WORDS\n"
                 + "  example: find project meeting\n\n";
@@ -48,7 +45,7 @@ public class Ui {
     /**
      * Returns help for the 'todo' command.
      */
-    public String getTodoHelp() {
+    public static String getTodoHelp() {
         return "  info: add a task.\n"
                 + "  usage: todo TASK_NAME\n"
                 + "  example: todo watch lecture recording\n\n";
@@ -57,7 +54,7 @@ public class Ui {
     /**
      * Returns help for the 'deadline' command.
      */
-    public String getDeadlineHelp() {
+    public static String getDeadlineHelp() {
         return "  info: add a task with a deadline.\n"
                 + "  usage: deadline TASK_NAME /by dd/MM/yyyy HHmm\n"
                 + "  example: deadline week 3 iP /by 30/01/2026 1600\n\n";
@@ -66,7 +63,7 @@ public class Ui {
     /**
      * Returns help for the 'event' command.
      */
-    public String getEventHelp() {
+    public static String getEventHelp() {
         return "  info: add a task with a start and end.\n"
                 + "  usage: event TASK_NAME /from dd/MM/yyyy HHmm /to dd/MM/yyyy HHmm\n"
                 + "  example: event tP meeting /from 30/01/2026 1800 /to 30/01/2026 1900\n\n";
@@ -75,7 +72,7 @@ public class Ui {
     /**
      * Returns help for the 'delete' command.
      */
-    public String getDeleteHelp() {
+    public static String getDeleteHelp() {
         return "  info: removes an existing task.\n"
                 + "  usage: delete TASK_NUMBER\n"
                 + "  example: delete 1\n\n"
@@ -85,7 +82,7 @@ public class Ui {
     /**
      * Returns help for the 'mark' command.
      */
-    public String getMarkHelp() {
+    public static String getMarkHelp() {
         return "  info: set a task as done, indicated by '[X]'.\n"
                 + "  usage: mark TASK_NUMBER\n"
                 + "  example: mark 1\n\n"
@@ -95,7 +92,7 @@ public class Ui {
     /**
      * Returns help for the 'unmark' command.
      */
-    public String getUnmarkHelp() {
+    public static String getUnmarkHelp() {
         return "  info: set a task as not done, indicated by '[ ]'.\n"
                 + "  usage: unmark TASK_NUMBER\n"
                 + "  example: unmark 1\n\n"

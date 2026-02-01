@@ -3,7 +3,6 @@ package johndoe.command;
 import johndoe.exception.JohnDoeException;
 import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
-import johndoe.ui.Ui;
 
 /**
  * Handles method calls to {@code TaskList} and {@code Ui} according to child type.
@@ -28,5 +27,5 @@ public abstract class Command {
      * @return Corresponding message after running the methods.
      * @throws JohnDoeException If user input format was invalid.
      */
-    public abstract String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException;
+    public abstract String run(TaskList taskList, Storage storage) throws JohnDoeException;
 }
