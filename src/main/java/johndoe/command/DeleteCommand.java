@@ -3,6 +3,7 @@ package johndoe.command;
 import java.util.OptionalInt;
 
 import johndoe.exception.JohnDoeException;
+import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -41,7 +42,7 @@ public class DeleteCommand extends Command {
      * @return Successful delete or help message.
      * @throws JohnDoeException If index is out of bounds.
      */
-    public String run(TaskList taskList, Ui ui) throws JohnDoeException {
+    public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
             return taskList.deleteTask(opInt.getAsInt(), ui);
         } else {

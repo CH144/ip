@@ -1,5 +1,6 @@
 package johndoe.command;
 
+import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -17,7 +18,7 @@ public class UnknownCommand extends Command {
     /**
      * Returns more help.
      */
-    public String run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui, Storage storage) {
         return ui.getUnknownCommandHelp();
     }
 }

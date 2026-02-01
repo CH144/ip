@@ -3,6 +3,7 @@ package johndoe.command;
 import java.util.OptionalInt;
 
 import johndoe.exception.JohnDoeException;
+import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -41,7 +42,7 @@ public class MarkCommand extends Command {
      * @return Successful mark or help message.
      * @throws JohnDoeException If the index is out of bounds.
      */
-    public String run(TaskList taskList, Ui ui) throws JohnDoeException {
+    public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
             return taskList.markTask(opInt.getAsInt(), ui);
         } else {

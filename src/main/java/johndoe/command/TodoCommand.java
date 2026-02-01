@@ -3,6 +3,7 @@ package johndoe.command;
 import java.util.Arrays;
 import java.util.Optional;
 
+import johndoe.storage.Storage;
 import johndoe.task.Todo;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
@@ -36,7 +37,7 @@ public class TodoCommand extends Command {
      *
      * @return Successful add or help message.
      */
-    public String run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui, Storage storage) {
         if (opTask.isPresent()) {
             return taskList.addTask(opTask.get(), ui);
         } else {

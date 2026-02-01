@@ -2,6 +2,7 @@ package johndoe.command;
 
 import java.util.Optional;
 
+import johndoe.storage.Storage;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
 
@@ -30,7 +31,7 @@ public class FindCommand extends Command {
     /**
      * Returns all {@code Task} that contain the keywords in the task name, or the help message.
      */
-    public String run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui, Storage storage) {
         if (opString.isPresent()) {
             return taskList.findTasks(opString.get(), ui);
         } else {

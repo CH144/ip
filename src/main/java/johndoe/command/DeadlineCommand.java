@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 import johndoe.exception.JohnDoeException;
+import johndoe.storage.Storage;
 import johndoe.task.Deadline;
 import johndoe.tasklist.TaskList;
 import johndoe.ui.Ui;
@@ -73,7 +74,7 @@ public class DeadlineCommand extends Command {
      *
      * @return Successful add or help message.
      */
-    public String run(TaskList taskList, Ui ui) {
+    public String run(TaskList taskList, Ui ui, Storage storage) {
         if (opTask.isPresent()) {
             return taskList.addTask(opTask.get(), ui);
         } else {
