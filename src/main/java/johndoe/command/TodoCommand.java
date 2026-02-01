@@ -39,7 +39,8 @@ public class TodoCommand extends Command {
      */
     public String run(TaskList taskList, Ui ui, Storage storage) {
         if (opTask.isPresent()) {
-            return taskList.addTask(opTask.get(), ui);
+            return taskList.addTask(opTask.get(), ui)
+                    + storage.write(taskList, ui);
         } else {
             return ui.getTodoHelp();
         }

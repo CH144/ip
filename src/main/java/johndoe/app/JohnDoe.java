@@ -45,9 +45,6 @@ public class JohnDoe {
     public String processUserInput(String userInput) {
         try {
             Command command = Parser.inputToCommand(userInput);
-            if (command.isBye()) {
-                storage.write(taskList, ui);
-            }
             return command.run(taskList, ui, storage);
         } catch (JohnDoeException e) {
             return e.getMessage();

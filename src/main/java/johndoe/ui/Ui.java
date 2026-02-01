@@ -33,8 +33,7 @@ public class Ui {
                 + "    unmark\n"
                 + "    bye\n\n"
                 + "  For more details, enter a command with no arguments.\n"
-                + "  Commands are case-sensitive.\n\n"
-                + "  WARNING: tasks will only be saved with the 'bye' command!\n\n";
+                + "  Commands are case-sensitive.\n\n";
     }
 
     /**

@@ -44,7 +44,8 @@ public class UnmarkCommand extends Command {
      */
     public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
-            return taskList.unmarkTask(opInt.getAsInt(), ui);
+            return taskList.unmarkTask(opInt.getAsInt(), ui)
+                    + storage.write(taskList, ui);
         } else {
             return ui.getUnmarkHelp();
         }

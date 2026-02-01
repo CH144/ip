@@ -44,7 +44,8 @@ public class DeleteCommand extends Command {
      */
     public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
-            return taskList.deleteTask(opInt.getAsInt(), ui);
+            return taskList.deleteTask(opInt.getAsInt(), ui)
+                    + storage.write(taskList, ui);
         } else {
             return ui.getDeleteHelp();
         }

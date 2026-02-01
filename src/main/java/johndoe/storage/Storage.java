@@ -21,6 +21,8 @@ public class Storage {
             "  Successfully loaded existing tasks.\n\n";
     private static final String LOAD_ERROR =
             "  Failed to load tasks. Please close and relaunch the app.\n\n";
+    private static final String SAVE_SUCCESS =
+            "  Successfully saved existing tasks.\n\n";
     private static final String SAVE_ERROR =
             "  Failed to save tasks. Please copy the tasklist manually.\n\n";
     private Path filePath;
@@ -51,12 +53,12 @@ public class Storage {
                 }
                 return LOAD_SUCCESS + ui.getUnknownCommandHelp();
             }
+            return ui.getUnknownCommandHelp();
         } catch (IOException e) {
             return LOAD_ERROR;
         } catch (JohnDoeException e) {
             return LOAD_ERROR + e.getMessage();
         }
-        return ui.getUnknownCommandHelp();
     }
 
     /**
@@ -83,6 +85,6 @@ public class Storage {
             }
             return errorMessage;
         }
-        return "";
+        return SAVE_SUCCESS;
     }
 }

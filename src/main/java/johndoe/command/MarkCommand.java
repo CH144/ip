@@ -44,7 +44,8 @@ public class MarkCommand extends Command {
      */
     public String run(TaskList taskList, Ui ui, Storage storage) throws JohnDoeException {
         if (opInt.isPresent()) {
-            return taskList.markTask(opInt.getAsInt(), ui);
+            return taskList.markTask(opInt.getAsInt(), ui)
+                    + storage.write(taskList, ui);
         } else {
             return ui.getMarkHelp();
         }
