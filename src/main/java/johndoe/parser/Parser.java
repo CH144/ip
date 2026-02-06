@@ -1,7 +1,8 @@
 package johndoe.parser;
 
+import static johndoe.task.Task.SAVE_TIME_FORMAT;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import johndoe.command.ByeCommand;
@@ -28,9 +29,6 @@ import johndoe.task.Todo;
  * and {@code String} to {@code Task} for file entries.
  */
 public class Parser {
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-
     private Parser() {
         // intentionally blank
     }
@@ -129,7 +127,7 @@ public class Parser {
 
         String taskName = tokens[2].strip();
 
-        if (taskName.equals("")) {
+        if (taskName.isBlank()) {
             throw new JohnDoeException(errorMessage);
         }
 
@@ -158,14 +156,14 @@ public class Parser {
 
         String taskName = tokens[2].strip();
 
-        if (taskName.equals("")) {
+        if (taskName.isBlank()) {
             throw new JohnDoeException(errorMessage);
         }
 
         try {
             Deadline deadline = new Deadline(
                     taskName,
-                    LocalDateTime.parse(tokens[3].strip(), FORMATTER));
+                    LocalDateTime.parse(tokens[3].strip(), SAVE_TIME_FORMAT));
             switch (tokens[1].strip()) {
             case "1":
                 deadline.markAsDone();
@@ -194,15 +192,15 @@ public class Parser {
         String taskName = tokens[2].strip();
         String[] timings = tokens[3].split("\\~", 2);
 
-        if (taskName.equals("") || timings.length != 2) {
+        if (taskName.isBlank() || timings.length != 2) {
             throw new JohnDoeException(errorMessage);
         }
 
         try {
             Event event = new Event(
                     taskName,
-                    LocalDateTime.parse(timings[0].strip(), FORMATTER),
-                    LocalDateTime.parse(timings[1].strip(), FORMATTER));
+                    LocalDateTime.parse(timings[0].strip(), SAVE_TIME_FORMAT),
+                    LocalDateTime.parse(timings[1].strip(), SAVE_TIME_FORMAT));
             switch (tokens[1].strip()) {
             case "1":
                 event.markAsDone();

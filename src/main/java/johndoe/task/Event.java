@@ -1,7 +1,6 @@
 package johndoe.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import johndoe.exception.JohnDoeException;
 
@@ -9,10 +8,8 @@ import johndoe.exception.JohnDoeException;
  * Represents a task with a name, completion status, start and end.
  */
 public class Event extends Task {
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private final LocalDateTime start;
+    private final LocalDateTime end;
 
     /**
      * Creates a new {@code Event} with the given name, start and end.
@@ -33,15 +30,15 @@ public class Event extends Task {
     public String toFileEntry() {
         return String.format("E | %s | %s ~ %s",
                 super.toFileEntry(),
-                start.format(FORMATTER),
-                end.format(FORMATTER));
+                start.format(SAVE_TIME_FORMAT),
+                end.format(SAVE_TIME_FORMAT));
     }
 
     @Override
     public String toString() {
         return String.format("[E]%s (from: %s to: %s)",
                 super.toString(),
-                start.format(FORMATTER),
-                end.format(FORMATTER));
+                start.format(SAVE_TIME_FORMAT),
+                end.format(SAVE_TIME_FORMAT));
     }
 }

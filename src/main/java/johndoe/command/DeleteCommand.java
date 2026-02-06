@@ -11,7 +11,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to remove an existing {@code Task}.
  */
 public class DeleteCommand extends Command {
-    private OptionalInt opInt;
+    private final OptionalInt opInt;
 
     /**
      * Creates a new {@code DeleteCommand} that will print help.

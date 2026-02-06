@@ -12,7 +12,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to add a {@code Todo}.
  */
 public class TodoCommand extends Command {
-    private Optional<Todo> opTask;
+    private final Optional<Todo> opTask;
 
     /**
      * Creates a new {@code TodoCommand} that will print help.

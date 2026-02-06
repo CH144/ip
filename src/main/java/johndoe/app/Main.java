@@ -13,7 +13,7 @@ import johndoe.gui.MainWindow;
  * GUI for the {@code JohnDoe} application.
  */
 public class Main extends Application {
-    private JohnDoe johnDoe = new JohnDoe("./data/tasks.txt");
+    private final JohnDoe johnDoe = new JohnDoe("./data/tasks.txt");
 
     @Override
     public void start(Stage stage) {

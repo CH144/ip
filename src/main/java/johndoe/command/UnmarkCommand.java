@@ -11,7 +11,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to mark an existing {@code Task} as not done.
  */
 public class UnmarkCommand extends Command {
-    private OptionalInt opInt;
+    private final OptionalInt opInt;
 
     /**
      * Creates a new {@code UnmarkCommand} that will print help.

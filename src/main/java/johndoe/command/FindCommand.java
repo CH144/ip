@@ -10,7 +10,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to output all {@code Task} containing keywords.
  */
 public class FindCommand extends Command {
-    private Optional<String> opString;
+    private final Optional<String> opString;
 
     /**
      * Creates a new {@code FindCommand} that will print help.

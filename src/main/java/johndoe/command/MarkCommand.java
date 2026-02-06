@@ -11,7 +11,7 @@ import johndoe.ui.Ui;
  * Represents the {@code Command} to mark an existing {@code Task} as done.
  */
 public class MarkCommand extends Command {
-    private OptionalInt opInt;
+    private final OptionalInt opInt;
 
     /**
      * Creates a new {@code MarkCommand} that will print help.

@@ -13,14 +13,14 @@ import johndoe.task.Task;
 public class TaskList {
     private static final String OOB_ERROR = "  Task number does not exist.\n"
             + "  Enter 'list' to view all tasks and their corresponding number.\n\n";
-    private ArrayList<Task> taskList;
+    private final ArrayList<Task> tasks;
 
     /**
      * Creates an empty {@code ArrayList} of {@code Task}.
      * Every new run of {@code JohnDoe} starts with a fresh {@code TaskList}.
      */
     public TaskList() {
-        taskList = new ArrayList<Task>();
+        tasks = new ArrayList<Task>();
     }
 
     /**
@@ -29,7 +29,7 @@ public class TaskList {
      * Has no output.
      */
     public void addTaskSilently(Task task) {
-        taskList.add(task);
+        tasks.add(task);
     }
 
     /**
@@ -39,12 +39,12 @@ public class TaskList {
      * @return Output on success.
      */
     public String addTask(Task task) {
-        taskList.add(task);
+        tasks.add(task);
         return String.format("  Got it. I've added this task:\n"
                 + "    %s\n"
                 + "  Now you have %d tasks in the list.\n\n",
                 task.toString(),
-                taskList.size());
+                tasks.size());
     }
 
     /**
@@ -55,13 +55,13 @@ public class TaskList {
      */
     public String deleteTask(int index) throws JohnDoeException {
         try {
-            Task task = taskList.get(index);
-            taskList.remove(index);
+            Task task = tasks.get(index);
+            tasks.remove(index);
             return String.format("  Noted. I've removed this task:\n"
                     + "    %s\n"
                     + "  Now you have %d tasks in the list.\n\n",
                     task.toString(),
-                    taskList.size());
+                    tasks.size());
         } catch (IndexOutOfBoundsException e) {
             throw new JohnDoeException(OOB_ERROR);
         }
@@ -75,10 +75,10 @@ public class TaskList {
      */
     public String markTask(int index) throws JohnDoeException {
         try {
-            taskList.get(index).markAsDone();
+            tasks.get(index).markAsDone();
             return String.format("  Nice! I've marked this task as done:\n"
                     + "    %s\n\n",
-                    taskList.get(index).toString());
+                    tasks.get(index).toString());
         } catch (IndexOutOfBoundsException e) {
             throw new JohnDoeException(OOB_ERROR);
         }
@@ -92,10 +92,10 @@ public class TaskList {
      */
     public String unmarkTask(int index) throws JohnDoeException {
         try {
-            taskList.get(index).markAsNotDone();
+            tasks.get(index).markAsNotDone();
             return String.format("  OK, I've marked this task as not done yet:\n"
                     + "    %s\n\n",
-                    taskList.get(index).toString());
+                    tasks.get(index).toString());
         } catch (IndexOutOfBoundsException e) {
             throw new JohnDoeException(OOB_ERROR);
         }
@@ -106,10 +106,10 @@ public class TaskList {
      */
     public String getTasks() {
         String output = "  Here are the tasks in your list:\n";
-        for (int i = 0; i < taskList.size(); i++) {
+        for (int i = 0; i < tasks.size(); i++) {
             output += String.format("    %d. %s\n",
                     i + 1,
-                    taskList.get(i).toString());
+                    tasks.get(i).toString());
         }
         output += "\n";
         return output;
@@ -120,11 +120,11 @@ public class TaskList {
      */
     public String findTasks(String keyWords) {
         String output = String.format("  Here are the tasks that contain '%s':\n", keyWords);
-        for (int i = 0; i < taskList.size(); i++) {
-            if (taskList.get(i).taskNameContains(keyWords)) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).taskNameContains(keyWords)) {
                 output += String.format("    %d. %s\n",
                         i + 1,
-                        taskList.get(i).toString());
+                        tasks.get(i).toString());
             }
         }
         output += "\n";
@@ -135,6 +135,6 @@ public class TaskList {
      * Returns list of tasks in the format for saving to a file.
      */
     public List<String> toFileEntries() {
-        return taskList.stream().map(t -> t.toFileEntry()).toList();
+        return tasks.stream().map(t -> t.toFileEntry()).toList();
     }
 }

@@ -1,15 +1,12 @@
 package johndoe.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a task with a name, completion status and deadline.
  */
 public class Deadline extends Task {
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-    private LocalDateTime deadline;
+    private final LocalDateTime deadline;
 
     /**
      * Creates a new {@code Deadline} with the given name and deadline.
@@ -23,13 +20,13 @@ public class Deadline extends Task {
     public String toFileEntry() {
         return String.format("D | %s | %s",
             super.toFileEntry(),
-            deadline.format(FORMATTER));
+            deadline.format(Task.SAVE_TIME_FORMAT));
     }
 
     @Override
     public String toString() {
         return String.format("[D]%s (by: %s)",
                 super.toString(),
-                deadline.format(FORMATTER));
+                deadline.format(Task.SAVE_TIME_FORMAT));
     }
 }

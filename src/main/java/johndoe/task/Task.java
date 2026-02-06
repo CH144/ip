@@ -1,10 +1,17 @@
 package johndoe.task;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents a task with a name and completion status.
  */
 public class Task {
-    private String taskName;
+    public static final DateTimeFormatter INPUT_TIME_FORMAT =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+    public static final DateTimeFormatter SAVE_TIME_FORMAT =
+            DateTimeFormatter.ofPattern("yyy-MM-dd HHmm");
+
+    private final String taskName;
     private boolean isDone;
 
     protected Task(String taskName) {

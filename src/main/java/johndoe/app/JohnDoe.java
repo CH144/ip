@@ -14,8 +14,8 @@ import johndoe.tasklist.TaskList;
  * and store the tasklist to a file for future reference.
  */
 public class JohnDoe {
-    private TaskList taskList;
-    private Storage storage;
+    private final TaskList taskList;
+    private final Storage storage;
 
     /**
      * Creates a new {@code JohnDoe} with the given file path.

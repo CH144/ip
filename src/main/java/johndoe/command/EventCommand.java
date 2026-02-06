@@ -1,7 +1,8 @@
 package johndoe.command;
 
+import static johndoe.task.Task.INPUT_TIME_FORMAT;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +19,7 @@ import johndoe.ui.Ui;
  */
 public class EventCommand extends Command {
     private static final String HELP_SUFFIX = "  Enter 'event' for more help.\n\n";
-    private Optional<Event> opTask;
+    private final Optional<Event> opTask;
 
     /**
      * Creates a new {@code EventCommand} that will print help.
@@ -72,10 +73,9 @@ public class EventCommand extends Command {
             String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, fromIndex));
             String start = String.join(" ", Arrays.copyOfRange(tokens, fromIndex + 1, toIndex));
             String end = String.join(" ", Arrays.copyOfRange(tokens, toIndex + 1, tokens.length));
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
             opTask = Optional.of(new Event(taskName,
-                    LocalDateTime.parse(start, formatter),
-                    LocalDateTime.parse(end, formatter)));
+                    LocalDateTime.parse(start, INPUT_TIME_FORMAT),
+                    LocalDateTime.parse(end, INPUT_TIME_FORMAT)));
         } catch (DateTimeParseException e) {
             throw new JohnDoeException("  Invalid date & time format.\n" + HELP_SUFFIX);
         }

@@ -25,7 +25,7 @@ public class Storage {
             "  Successfully saved existing tasks.\n\n";
     private static final String SAVE_ERROR =
             "  Failed to save tasks. Please copy the tasklist manually.\n\n";
-    private Path filePath;
+    private final Path filePath;
 
     /**
      * Creates a new {@code Storage} with the filepath for loading and saving.
