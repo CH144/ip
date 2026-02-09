@@ -34,6 +34,8 @@ public class DeadlineCommand extends Command {
      * @throws JohnDoeException If user input is not in the expected format.
      */
     public DeadlineCommand(String input) throws JohnDoeException {
+        assert input != null : "Command argument cannot be null.";
+
         try {
             String[] tokens = input.split("\\s+");
 
