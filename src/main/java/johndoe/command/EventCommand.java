@@ -34,6 +34,8 @@ public class EventCommand extends Command {
      * @throws JohnDoeException If user input is not in the expected format.
      */
     public EventCommand(String input) throws JohnDoeException {
+        assert input != null : "Command argument cannot be null.";
+
         try {
             String[] tokens = input.split("\\s+");
 

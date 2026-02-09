@@ -26,6 +26,8 @@ public class DeleteCommand extends Command {
      * @throws JohnDoeException If input is not a number.
      */
     public DeleteCommand(String input) throws JohnDoeException {
+        assert input != null : "Command argument cannot be null.";
+
         try {
             opInt = OptionalInt.of(Integer.parseInt(input) - 1);
         } catch (NumberFormatException e) {
