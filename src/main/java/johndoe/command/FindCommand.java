@@ -23,6 +23,7 @@ public class FindCommand extends Command {
      * Creates a new {@code FindCommand} that will look for relevant {@code Task}.
      */
     public FindCommand(String keyWords) {
+        assert keyWords != null : "Command argument cannot be null.";
         opString = Optional.of(keyWords);
     }
 

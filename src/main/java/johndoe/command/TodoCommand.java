@@ -25,6 +25,8 @@ public class TodoCommand extends Command {
      * Creates a new {@code TodoCommand} that will add a {@code Todo}.
      */
     public TodoCommand(String input) {
+        assert input != null : "Command argument cannot be null.";
+
         String[] tokens = input.split("\\s+");
         String taskName = String.join(" ", Arrays.copyOfRange(tokens, 0, tokens.length));
         opTask = Optional.of(new Todo(taskName));
