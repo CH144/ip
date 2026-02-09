@@ -51,24 +51,34 @@ public class Parser {
 
     private static Command parseWithNoArg(String command) throws JohnDoeException {
         switch (command) {
+        case "b": // Fallthrough
         case "bye":
             return new ByeCommand();
+        case "h": // Fallthrough
         case "help":
             return new HelpCommand();
+        case "l": // Fallthrough
         case "list":
             return new ListCommand();
+        case "f": // Fallthrough
         case "find":
             return new FindCommand();
+        case "t": // Fallthrough
         case "todo":
             return new TodoCommand();
+        case "d": // Fallthrough
         case "deadline":
             return new DeadlineCommand();
+        case "e": // Fallthrough
         case "event":
             return new EventCommand();
+        case "dl": // Fallthrough
         case "delete":
             return new DeleteCommand();
+        case "m": // Fallthrough
         case "mark":
             return new MarkCommand();
+        case "u": // Fallthrough
         case "unmark":
             return new UnmarkCommand();
         default:
@@ -78,18 +88,25 @@ public class Parser {
 
     private static Command parseWithArg(String command, String arg) throws JohnDoeException {
         switch (command) {
+        case "f": // Fallthrough
         case "find":
             return new FindCommand(arg);
+        case "t": // Fallthrough
         case "todo":
             return new TodoCommand(arg);
+        case "d": // Fallthrough
         case "deadline":
             return new DeadlineCommand(arg);
+        case "e": // Fallthrough
         case "event":
             return new EventCommand(arg);
+        case "dl": // Fallthrough
         case "delete":
             return new DeleteCommand(arg);
+        case "m": // Fallthrough
         case "mark":
             return new MarkCommand(arg);
+        case "u": // Fallthrough
         case "unmark":
             return new UnmarkCommand(arg);
         default:

@@ -12,7 +12,7 @@ public class Ui {
      * Returns help for unknown commands.
      */
     public static String getUnknownCommandHelp() {
-        return "  Enter 'help' for a list of all available commands.\n\n";
+        return "  Enter 'help' or 'h' for a list of all available commands.\n\n";
     }
 
     /**
@@ -20,17 +20,18 @@ public class Ui {
      */
     public static String getHelp() {
         return "  Available commands:\n"
-                + "    list\n"
-                + "    find\n"
-                + "    todo\n"
-                + "    deadline\n"
-                + "    event\n"
-                + "    delete\n"
-                + "    mark\n"
-                + "    unmark\n"
-                + "    bye\n\n"
+                + "    list (l)\n"
+                + "    find (f)\n"
+                + "    todo (t)\n"
+                + "    deadline (d)\n"
+                + "    event (e)\n"
+                + "    delete (dl)\n"
+                + "    mark (m)\n"
+                + "    unmark (u)\n"
+                + "    bye (b)\n\n"
                 + "  For more details, enter a command with no arguments.\n"
-                + "  Commands are case-sensitive.\n\n";
+                + "  Commands are case-sensitive.\n"
+                + "  The shortcut for a command is shown brackets.\n\n";
     }
 
     /**
