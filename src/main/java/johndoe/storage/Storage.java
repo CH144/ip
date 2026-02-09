@@ -43,17 +43,18 @@ public class Storage {
     public String read(TaskList taskList) {
         // Code written with help from ChatGPT.
         try {
-            if (Files.exists(filePath)) {
-                try (BufferedReader reader = Files.newBufferedReader(filePath)) {
-                    String entry;
-                    while ((entry = reader.readLine()) != null) {
-                        Task t = Parser.entryToTask(entry);
-                        taskList.addTaskSilently(t);
-                    }
-                }
-                return LOAD_SUCCESS + Ui.getUnknownCommandHelp();
+            if (Files.notExists(filePath)) {
+                return Ui.getUnknownCommandHelp();
             }
-            return Ui.getUnknownCommandHelp();
+
+            try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+                String entry;
+                while ((entry = reader.readLine()) != null) {
+                    Task t = Parser.entryToTask(entry);
+                    taskList.addTaskSilently(t);
+                }
+            }
+            return LOAD_SUCCESS + Ui.getUnknownCommandHelp();
         } catch (IOException e) {
             return LOAD_ERROR;
         } catch (JohnDoeException e) {
