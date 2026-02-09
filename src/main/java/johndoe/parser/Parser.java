@@ -43,49 +43,57 @@ public class Parser {
         String command = tokens[0];
 
         if (tokens.length > 1) {
-            switch (command) {
-            case "find":
-                return new FindCommand(tokens[1]);
-            case "todo":
-                return new TodoCommand(tokens[1]);
-            case "deadline":
-                return new DeadlineCommand(tokens[1]);
-            case "event":
-                return new EventCommand(tokens[1]);
-            case "delete":
-                return new DeleteCommand(tokens[1]);
-            case "mark":
-                return new MarkCommand(tokens[1]);
-            case "unmark":
-                return new UnmarkCommand(tokens[1]);
-            default:
-                return new UnknownCommand();
-            }
+            return parseWithArg(command, tokens[1]);
         } else {
-            switch (command) {
-            case "bye":
-                return new ByeCommand();
-            case "help":
-                return new HelpCommand();
-            case "list":
-                return new ListCommand();
-            case "find":
-                return new FindCommand();
-            case "todo":
-                return new TodoCommand();
-            case "deadline":
-                return new DeadlineCommand();
-            case "event":
-                return new EventCommand();
-            case "delete":
-                return new DeleteCommand();
-            case "mark":
-                return new MarkCommand();
-            case "unmark":
-                return new UnmarkCommand();
-            default:
-                return new UnknownCommand();
-            }
+            return parseWithNoArg(command);
+        }
+    }
+
+    private static Command parseWithNoArg(String command) throws JohnDoeException {
+        switch (command) {
+        case "bye":
+            return new ByeCommand();
+        case "help":
+            return new HelpCommand();
+        case "list":
+            return new ListCommand();
+        case "find":
+            return new FindCommand();
+        case "todo":
+            return new TodoCommand();
+        case "deadline":
+            return new DeadlineCommand();
+        case "event":
+            return new EventCommand();
+        case "delete":
+            return new DeleteCommand();
+        case "mark":
+            return new MarkCommand();
+        case "unmark":
+            return new UnmarkCommand();
+        default:
+            return new UnknownCommand();
+        }
+    }
+
+    private static Command parseWithArg(String command, String arg) throws JohnDoeException {
+        switch (command) {
+        case "find":
+            return new FindCommand(arg);
+        case "todo":
+            return new TodoCommand(arg);
+        case "deadline":
+            return new DeadlineCommand(arg);
+        case "event":
+            return new EventCommand(arg);
+        case "delete":
+            return new DeleteCommand(arg);
+        case "mark":
+            return new MarkCommand(arg);
+        case "unmark":
+            return new UnmarkCommand(arg);
+        default:
+            return new UnknownCommand();
         }
     }
 
