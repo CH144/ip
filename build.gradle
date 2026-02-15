@@ -61,11 +61,14 @@ jar {
 }
 
 shadowJar {
-    archiveBaseName = "johndoe"
+    archiveBaseName.set('johndoe')
+    manifest {
+        attributes('Main-Class': 'johndoe.app.Launcher')
+    }
     archiveClassifier = null
 }
 
-run{
+run {
     standardInput = System.in
     enableAssertions = true
 }
