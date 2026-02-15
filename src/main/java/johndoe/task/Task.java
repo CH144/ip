@@ -9,7 +9,7 @@ public class Task {
     public static final DateTimeFormatter INPUT_TIME_FORMAT =
             DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
     public static final DateTimeFormatter SAVE_TIME_FORMAT =
-            DateTimeFormatter.ofPattern("yyy-MM-dd HHmm");
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
     private final String taskName;
     private boolean isDone;
