@@ -41,7 +41,7 @@ public class Storage {
      * @return Success or error message with help message.
      */
     public String read(TaskList taskList) {
-        // Code written with help from ChatGPT.
+        // Reading logic written with help from ChatGPT.
         try {
             if (Files.notExists(filePath)) {
                 return Ui.getUnknownCommandHelp();
@@ -70,7 +70,7 @@ public class Storage {
      * @return Success or error message.
      */
     public String write(TaskList taskList) {
-        // Code written with help from ChatGPT.
+        // Writing logic written with help from ChatGPT.
         try {
             Files.createDirectories(filePath.getParent());
             Files.write(
