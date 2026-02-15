@@ -38,7 +38,7 @@ public class Ui {
      * Returns help for the 'find' command.
      */
     public static String getFindHelp() {
-        return "  info: lists tasks that contain keywords.\n"
+        return "  info: lists tasks that contain the given phrase.\n"
                 + "  usage: find KEY_WORDS\n"
                 + "  example: find project meeting\n\n";
     }
