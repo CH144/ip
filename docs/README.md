@@ -69,3 +69,12 @@ Lists tasks that contain the given phrase in the name.
 Format: `find KEY_WORDS`
 
 Example: `find project meeting`
+
+## Note on data persistence
+JohnDoe uses `|` as delimiters when storing tasks in the storage file `./data/tasks.txt`.
+
+`|` in task names are not filtered, but doing so will create invalid entries in the storage file.
+
+If the app detects an invalid entry, it will show the entry in the GUI, along with a formatting guide.
+
+Please manually fix such entries before trying to reopen the app.
