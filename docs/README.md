@@ -64,7 +64,7 @@ Format: `unmark TASK_NUMBER`
 Example: `unmark 1`
 
 ## Search using taskname: `find`
-Lists tasks that contain the given phrase in the name.
+Lists tasks that contain the given phrase in the name. Case-sensitive.
 
 Format: `find KEY_WORDS`
 
