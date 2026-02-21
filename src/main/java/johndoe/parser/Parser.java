@@ -39,6 +39,10 @@ public class Parser {
      * @throws JohnDoeException If {@code Command} instantiation has an error.
      */
     public static Command inputToCommand(String userInput) throws JohnDoeException {
+        if (userInput.contains("|")) {
+            throw new JohnDoeException("  The | character is not allowed.\n\n");
+        }
+
         String[] tokens = userInput.split("\\s+", 2);
         String command = tokens[0];
 
@@ -120,7 +124,7 @@ public class Parser {
      * @throws JohnDoeException If the file entry format is incorrect.
      */
     public static Task entryToTask(String entry) throws JohnDoeException {
-        String errorMessage = "  Invalid entry: " + entry + "\n";
+        String errorMessage = "  Please correct the invalid entry: " + entry + "\n";
 
         String[] tokens = entry.split("\\|");
 
@@ -130,20 +134,19 @@ public class Parser {
 
         switch (tokens[0].strip()) {
         case "T":
-            return entryToTodo(entry, tokens);
+            return entryToTodo(errorMessage, tokens);
         case "D":
-            return entryToDeadline(entry, tokens);
+            return entryToDeadline(errorMessage, tokens);
         case "E":
-            return entryToEvent(entry, tokens);
+            return entryToEvent(errorMessage, tokens);
         default:
             throw new JohnDoeException(errorMessage);
         }
     }
 
-    private static Todo entryToTodo(String entry, String[] tokens) throws JohnDoeException {
-        String errorMessage = "  Invalid entry: "
-                + entry
-                + "\n  Todo should be of the format: 'T | IS_TASK_DONE | TASK_NAME'\n"
+    private static Todo entryToTodo(String prefix, String[] tokens) throws JohnDoeException {
+        String errorMessage = prefix
+                + "  Todo should be of the format: 'T | IS_TASK_DONE | TASK_NAME'\n"
                 + "  Where IS_TASK_DONE may be 1 for done or 0 for not done.\n";
 
         if (tokens.length != 3) {
@@ -168,10 +171,9 @@ public class Parser {
         }
     }
 
-    private static Deadline entryToDeadline(String entry, String[] tokens) throws JohnDoeException {
-        String errorMessage = "  Invalid entry: "
-                + entry
-                + "\n  Deadline should be of the format: 'D | IS_TASK_DONE | TASK_NAME | DEADLINE'\n"
+    private static Deadline entryToDeadline(String prefix, String[] tokens) throws JohnDoeException {
+        String errorMessage = prefix
+                + "  Deadline should be of the format: 'D | IS_TASK_DONE | TASK_NAME | DEADLINE'\n"
                 + "  Where IS_TASK_DONE may be 1 for done or 0 for not done,\n"
                 + "  and DEADLINE is of the format 'yyyy-MM-dd HHmm', such as: '2026-01-01 1630'\n";
 
@@ -203,10 +205,9 @@ public class Parser {
         }
     }
 
-    private static Event entryToEvent(String entry, String[] tokens) throws JohnDoeException {
-        String errorMessage = "  Invalid entry: "
-                + entry
-                + "\n  Event should be of the format: 'E | IS_TASK_DONE | TASK_NAME | START ~ END'\n"
+    private static Event entryToEvent(String prefix, String[] tokens) throws JohnDoeException {
+        String errorMessage = prefix
+                + "  Event should be of the format: 'E | IS_TASK_DONE | TASK_NAME | START ~ END'\n"
                 + "  Where IS_TASK_DONE may be 1 for done or 0 for not done,\n"
                 + "  and START and END are of the format 'yyyy-MM-dd HHmm', such as: '2026-01-01 1630'\n";
 

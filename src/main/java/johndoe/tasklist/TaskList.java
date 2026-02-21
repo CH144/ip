@@ -105,6 +105,10 @@ public class TaskList {
      * Returns all recorded tasks in the order they were added.
      */
     public String getTasks() {
+        if (tasks.size() == 0) {
+            return "  There are no tasks.\n\n";
+        }
+
         String output = "  Here are the tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {
             output += String.format("    %d. %s\n",
@@ -119,16 +123,23 @@ public class TaskList {
      * Returns all recorded tasks with task name that contains the keywords as substring.
      */
     public String findTasks(String keyWords) {
-        String output = String.format("  Here are the tasks that contain '%s':\n", keyWords);
+        String matchingTasks = "";
+
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).taskNameContains(keyWords)) {
-                output += String.format("    %d. %s\n",
+                matchingTasks += String.format("    %d. %s\n",
                         i + 1,
                         tasks.get(i).toString());
             }
         }
-        output += "\n";
-        return output;
+
+        if (matchingTasks.isBlank()) {
+            return String.format("  There are no tasks that contain '%s'\n\n", keyWords);
+        }
+
+        return String.format("  Here are the tasks that contain '%s':\n", keyWords)
+                + matchingTasks
+                + "\n";
     }
 
     /**

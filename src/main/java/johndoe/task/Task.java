@@ -37,7 +37,7 @@ public class Task {
      * Returns if the task name contains the substring.
      */
     public boolean taskNameContains(String s) {
-        return taskName.contains(s);
+        return taskName.toLowerCase().contains(s.toLowerCase());
     }
 
     /**
