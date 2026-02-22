@@ -72,6 +72,8 @@ Format: `find KEY_WORDS`
 
 Example: `find project meeting`
 
+## Exiting the app: `bye`
+
 ## Storage
 Tasks are automatically saved after every command in the file `./data/tasks.txt`
 
