@@ -75,7 +75,7 @@ Example: `find project meeting`
 ## Storage
 Tasks are automatically saved after every command in the file `./data/tasks.txt`
 
-The `|` character is used the delimiter in storage, hence is not accepted as user input.
+The `|` character is used as the delimiter in storage, hence is not accepted as user input.
 
 JohnDoe will notify when data corruption is detected.
 
